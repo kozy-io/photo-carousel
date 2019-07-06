@@ -1,6 +1,6 @@
 # PhotoCarousel
 
-> Photo Carousel module for Guestly
+> Photo Carousel module of Guestly
 
 ## Related Projects
 
