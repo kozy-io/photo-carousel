@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import ProfilePicture from './ProfilePicture';
 import SubPictures from './SubPictures';
+import ExtraPictures from './ExtraPictures';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,9 +15,16 @@ class App extends React.Component {
       photos: [],
       windowHeight: window.innerHeight,
       windowWidth: window.innerWidth,
+      profileOpacity: 1,
+      photoTwoOpacity: 1,
+      photoThreeOpacity: 1,
+      photoFourOpacity: 1,
+      photoFiveOpacity: 1,
+
     };
 
     this.getListingPhotos = this.getListingPhotos.bind(this);
+    this.hoverHandler = this.hoverHandler.bind(this);
   }
 
   componentDidMount() {
@@ -35,21 +43,102 @@ class App extends React.Component {
       });
   }
 
+  hoverHandler(focus) {
+    if (focus === 'profile') {
+      this.setState({
+        photoTwoOpacity: 0.7,
+        photoThreeOpacity: 0.7,
+        photoFourOpacity: 0.7,
+        photoFiveOpacity: 0.7,
+      });
+    }
+
+    if (focus === 'two') {
+      this.setState({
+        profileOpacity: 0.7,
+        photoThreeOpacity: 0.7,
+        photoFourOpacity: 0.7,
+        photoFiveOpacity: 0.7,
+      });
+    }
+
+    if (focus === 'three') {
+      this.setState({
+        profileOpacity: 0.7,
+        photoTwoOpacity: 0.7,
+        photoFourOpacity: 0.7,
+        photoFiveOpacity: 0.7,
+      });
+    }
+
+    if (focus === 'four') {
+      this.setState({
+        profileOpacity: 0.7,
+        photoTwoOpacity: 0.7,
+        photoThreeOpacity: 0.7,
+        photoFiveOpacity: 0.7,
+      });
+    }
+
+    if (focus === 'five') {
+      this.setState({
+        profileOpacity: 0.7,
+        photoTwoOpacity: 0.7,
+        photoThreeOpacity: 0.7,
+        photoFourOpacity: 0.7,
+      });
+    }
+
+    if (focus === 'clear') {
+      this.setState({
+        profileOpacity: 1,
+        photoTwoOpacity: 1,
+        photoThreeOpacity: 1,
+        photoFourOpacity: 1,
+        photoFiveOpacity: 1,
+      });
+    }
+  }
+
   render() {
-    const { photos, windowHeight, windowWidth } = this.state;
-    const tmp = [];
+    const {
+      photos, windowHeight, windowWidth, profileOpacity,
+      photoTwoOpacity, photoThreeOpacity, photoFourOpacity, photoFiveOpacity,
+    } = this.state;
     return (
       <div className="photoCarousel">
-        <ProfilePicture />
+        <ProfilePicture
+          hoverHandler={this.hoverHandler}
+          totalWidth={windowWidth}
+          totalHeight={windowHeight}
+          opacity={profileOpacity}
+        />
         {photos.length >= 3
-          ? <SubPictures photos={[photos[0].photoUrl, photos[1].photoUrl]} />
+          ? (
+            <SubPictures
+              photos={[photos[0].photoUrl, photos[1].photoUrl]}
+              totalWidth={windowWidth}
+              totalHeight={windowHeight}
+              opacityTwo={photoTwoOpacity}
+              opacityThree={photoThreeOpacity}
+              hoverHandler={this.hoverHandler}
+            />
+          )
           : undefined
         }
         {photos.length >= 5
-          ? <SubPictures photos={[photos[2].photoUrl, photos[3].photoUrl]} />
+          ? (
+            <ExtraPictures
+              photos={[photos[2].photoUrl, photos[3].photoUrl]}
+              totalWidth={windowWidth}
+              totalHeight={windowHeight}
+              opacityFour={photoFourOpacity}
+              opacityFive={photoFiveOpacity}
+              hoverHandler={this.hoverHandler}
+            />
+          )
           : undefined
         }
-        {console.log(tmp)}
       </div>
     );
   }
