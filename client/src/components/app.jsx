@@ -15,6 +15,10 @@ class App extends React.Component {
       photos: [],
       windowHeight: window.innerHeight,
       windowWidth: window.innerWidth,
+      currHeight: window.innerHeight,
+      currWidth: window.innerWidth,
+      threshold: (window.innerWidth * 0.65),
+      lastThreshold: (window.innerWidth * 0.4),
       profileOpacity: 1,
       photoTwoOpacity: 1,
       photoThreeOpacity: 1,
@@ -25,10 +29,16 @@ class App extends React.Component {
 
     this.getListingPhotos = this.getListingPhotos.bind(this);
     this.hoverHandler = this.hoverHandler.bind(this);
+    this.updateDimensions = this.updateDimensions.bind(this);
   }
 
   componentDidMount() {
     this.getListingPhotos();
+    window.addEventListener('resize', this.updateDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions);
   }
 
   getListingPhotos() {
@@ -41,6 +51,13 @@ class App extends React.Component {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  updateDimensions() {
+    this.setState({
+      currWidth: window.innerWidth,
+      currHeight: window.innerHeight,
+    });
   }
 
   hoverHandler(focus) {
@@ -102,39 +119,51 @@ class App extends React.Component {
 
   render() {
     const {
-      photos, windowHeight, windowWidth, profileOpacity,
+      photos, windowHeight, windowWidth, profileOpacity, currWidth, currHeight,
       photoTwoOpacity, photoThreeOpacity, photoFourOpacity, photoFiveOpacity,
+      threshold, lastThreshold,
     } = this.state;
     return (
       <div className="photoCarousel">
-        <ProfilePicture
-          hoverHandler={this.hoverHandler}
-          totalWidth={windowWidth}
-          totalHeight={windowHeight}
-          opacity={profileOpacity}
-        />
-        {photos.length >= 3
+        {photos.length > 0
+          ? (
+            <ProfilePicture
+              photo={photos[0].photoUrl}
+              hoverHandler={this.hoverHandler}
+              totalWidth={windowWidth}
+              totalHeight={windowHeight}
+              opacity={profileOpacity}
+              currWidth={currWidth}
+              threshold={threshold}
+              lastThreshold={lastThreshold}
+            />
+          )
+          : undefined
+        }
+        {photos.length >= 3 && currWidth > lastThreshold
           ? (
             <SubPictures
-              photos={[photos[0].photoUrl, photos[1].photoUrl]}
+              photos={[photos[1].photoUrl, photos[2].photoUrl]}
               totalWidth={windowWidth}
               totalHeight={windowHeight}
               opacityTwo={photoTwoOpacity}
               opacityThree={photoThreeOpacity}
               hoverHandler={this.hoverHandler}
+              threshold={threshold}
             />
           )
           : undefined
         }
-        {photos.length >= 5
+        {photos.length >= 5 && currWidth > threshold
           ? (
             <ExtraPictures
-              photos={[photos[2].photoUrl, photos[3].photoUrl]}
+              photos={[photos[3].photoUrl, photos[4].photoUrl]}
               totalWidth={windowWidth}
               totalHeight={windowHeight}
               opacityFour={photoFourOpacity}
               opacityFive={photoFiveOpacity}
               hoverHandler={this.hoverHandler}
+              threshold={threshold}
             />
           )
           : undefined
