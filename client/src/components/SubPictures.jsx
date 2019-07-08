@@ -7,7 +7,7 @@ class SubPictures extends React.Component {
     super(props);
 
     this.state = {
-      height: (window.innerHeight / 4),
+      height: '50%',
       width: (window.innerWidth / 4),
       hoverTwo: false,
       hoverThree: false,
@@ -73,7 +73,7 @@ class SubPictures extends React.Component {
       photos, totalHeight, totalWidth, opacityTwo, opacityThree,
     } = this.props;
     return (
-      <div className="subPictureColumn" style={{ left: position }}>
+      <div className="subPictureColumn" style={{ left: position, height: '60%' }}>
         <div className="img-hover-zoom">
           <div className="entryOne">
             <img
@@ -82,7 +82,7 @@ class SubPictures extends React.Component {
               className="subPicture"
               alt="http://lorempixel.com/1440/960/city/"
               style={{
-                top: 0, minHeight: (totalHeight / 4), opacity: opacityTwo,
+                top: 0, minHeight: (totalHeight * 0.3), opacity: opacityTwo,
               }}
               height={height}
               width={width}
@@ -100,7 +100,7 @@ class SubPictures extends React.Component {
               className="subPicture"
               alt="http://lorempixel.com/1440/960/city/"
               style={{
-                top: 0, minHeight: (totalHeight / 4), opacity: opacityThree,
+                top: 0, minHeight: (totalHeight * 0.3), opacity: opacityThree,
               }}
               height={height}
               width={width}

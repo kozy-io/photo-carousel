@@ -75,7 +75,7 @@ class ProfilePicture extends React.Component {
             style={{
               top: 0, minHeight: (totalHeight / 2) + 1, opacity,
             }}
-            height="50%" width={widthPercent} onMouseEnter={this.hoverHandler}
+            height="60%" width={widthPercent} onMouseEnter={this.hoverHandler}
             onMouseLeave={this.hoverHandler}
           />
         </div>
