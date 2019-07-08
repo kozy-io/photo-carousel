@@ -6,7 +6,7 @@ class ExtraPictures extends React.Component {
     super(props);
 
     this.state = {
-      height: (window.innerHeight / 4),
+      height: '50%',
       width: (window.innerWidth / 4),
       hoverFour: false,
       hoverFive: false,
@@ -59,7 +59,7 @@ class ExtraPictures extends React.Component {
     const { height, width } = this.state;
     const { photos, totalHeight, totalWidth, opacityFour, opacityFive, currWidth } = this.props;
     return (
-      <div className="subPictureColumn" style={{ left: '50%' }}>
+      <div className="subPictureColumn" style={{ left: '50%', height: '60%' }}>
         <div className="img-hover-zoom">
           <div className="entryOne">
             <img
@@ -68,7 +68,7 @@ class ExtraPictures extends React.Component {
               className="subPicture"
               alt="http://lorempixel.com/1440/960/city/"
               style={{
-                top: 0, minHeight: (totalHeight / 4), opacity: opacityFour,
+                top: 0, minHeight: (totalHeight * 0.3), opacity: opacityFour,
               }}
               height={height}
               width={width}
@@ -86,7 +86,7 @@ class ExtraPictures extends React.Component {
               className="subPicture"
               alt="http://lorempixel.com/1440/960/city/"
               style={{
-                top: 0, minHeight: (totalHeight / 4), opacity: opacityFive,
+                top: 0, minHeight: (totalHeight * 0.3), opacity: opacityFive,
               }}
               height={height}
               width={width}
