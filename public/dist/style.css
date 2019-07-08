@@ -27,17 +27,18 @@ body {
 
 .picture {
     transform: scale(1) !important;
+    object-fit:cover;
     transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, -webkit-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, opacity 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
 }
+
 
 .subPictureColumn {
     flex-direction: column !important;
     position: relative !important;
+    background-color: black !important;
     overflow: hidden !important;
     border: 1px solid;
     display: inline-block;
-    left: 50% !important;
-    background-color: black !important;
 }
 
 .entryOne {
@@ -49,7 +50,6 @@ body {
     vertical-align: middle !important;
     position: relative !important;
     overflow: hidden !important;
-    border-bottom: hidden;
     transform: scale(1) !important;
     box-sizing: border-box;
 }
@@ -64,12 +64,12 @@ body {
     position: relative !important;
     overflow: hidden !important;
     border-top: 1px solid;
-    border-bottom: hidden;
     box-sizing: border-box;
 }
 
 
 .subPicture {
+    object-fit:cover;
     transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, -webkit-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, opacity 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
 } 
 

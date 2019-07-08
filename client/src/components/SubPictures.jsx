@@ -11,6 +11,7 @@ class SubPictures extends React.Component {
       width: (window.innerWidth / 4),
       hoverTwo: false,
       hoverThree: false,
+      position: '50%',
     };
 
     this.updateDimensions = this.updateDimensions.bind(this);
@@ -26,10 +27,20 @@ class SubPictures extends React.Component {
   }
 
   updateDimensions() {
-    this.setState({
-      width: (window.innerWidth / 4),
-      height: (window.innerHeight / 4),
-    });
+    const { threshold } = this.props;
+    if (window.innerWidth < threshold) {
+      this.setState({
+        width: (window.innerWidth / 4),
+        height: (window.innerHeight / 4),
+        position: '75%',
+      });
+    } else {
+      this.setState({
+        width: (window.innerWidth / 4),
+        height: (window.innerHeight / 4),
+        position: '50%',
+      });
+    }
   }
 
   hoverHandler({ target }) {
@@ -57,12 +68,12 @@ class SubPictures extends React.Component {
   }
 
   render() {
-    const { height, width } = this.state;
+    const { height, width, position } = this.state;
     const {
       photos, totalHeight, totalWidth, opacityTwo, opacityThree,
     } = this.props;
     return (
-      <div className="subPictureColumn">
+      <div className="subPictureColumn" style={{ left: position }}>
         <div className="img-hover-zoom">
           <div className="entryOne">
             <img
@@ -71,7 +82,7 @@ class SubPictures extends React.Component {
               className="subPicture"
               alt="http://lorempixel.com/1440/960/city/"
               style={{
-                top: 0, minWidth: (totalWidth / 4), minHeight: (totalHeight / 4), opacity: opacityTwo,
+                top: 0, minHeight: (totalHeight / 4), opacity: opacityTwo,
               }}
               height={height}
               width={width}
@@ -89,7 +100,7 @@ class SubPictures extends React.Component {
               className="subPicture"
               alt="http://lorempixel.com/1440/960/city/"
               style={{
-                top: 0, minWidth: (totalWidth / 4), minHeight: (totalHeight / 4), opacity: opacityThree,
+                top: 0, minHeight: (totalHeight / 4), opacity: opacityThree,
               }}
               height={height}
               width={width}

@@ -3,7 +3,6 @@
 /* eslint-disable react/jsx-first-prop-new-line */
 /* eslint-disable react/jsx-max-props-per-line */
 import React from 'react';
-import axios from 'axios';
 
 
 class ProfilePicture extends React.Component {
@@ -11,19 +10,17 @@ class ProfilePicture extends React.Component {
     super(props);
 
     this.state = {
-      photoUrl: '',
       height: (window.innerHeight / 2),
       width: (window.innerWidth / 2),
+      widthPercent: '50%',
       hover: false,
     };
 
-    this.getProfilePicture = this.getProfilePicture.bind(this);
     this.updateDimensions = this.updateDimensions.bind(this);
     this.hoverHandler = this.hoverHandler.bind(this);
   }
 
   componentDidMount() {
-    this.getProfilePicture();
     window.addEventListener('resize', this.updateDimensions);
   }
 
@@ -31,23 +28,27 @@ class ProfilePicture extends React.Component {
     window.removeEventListener('resize', this.updateDimensions);
   }
 
-  getProfilePicture() {
-    axios.get('/api/listings/photos/1')
-      .then((response) => {
-        this.setState({
-          photoUrl: response.data[0].photoUrl,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
   updateDimensions() {
-    this.setState({
-      width: (window.innerWidth / 2),
-      height: (window.innerHeight / 2),
-    });
+    const { threshold, lastThreshold, currWidth } = this.props;
+    if (currWidth < lastThreshold) {
+      this.setState({
+        width: (window.innerWidth / 2),
+        height: (window.innerHeight / 2),
+        widthPercent: '100%',
+      });
+    } else if (currWidth < threshold && currWidth > lastThreshold) {
+      this.setState({
+        width: (window.innerWidth / 2),
+        height: (window.innerHeight / 2),
+        widthPercent: '75%',
+      });
+    } else {
+      this.setState({
+        width: (window.innerWidth / 2),
+        height: (window.innerHeight / 2),
+        widthPercent: '50%',
+      });
+    }
   }
 
   hoverHandler() {
@@ -63,16 +64,18 @@ class ProfilePicture extends React.Component {
 
 
   render() {
-    const { photoUrl, height, width } = this.state;
-    const { totalHeight, totalWidth, opacity } = this.props;
+    const { height, width, widthPercent } = this.state;
+    const {
+      totalHeight, totalWidth, opacity, photo, currWidth, threshold, lastThreshold,
+    } = this.props;
     return (
       <div className="profileContainer">
         <div className="img-hover-zoom">
-          <img src={photoUrl} id="profilePicture" className="picture" alt="http://lorempixel.com/1440/960/city/"
+          <img src={photo} id="profilePicture" className="picture" alt="http://lorempixel.com/1440/960/city/"
             style={{
-              top: 0, minWidth: (totalWidth / 2) + 1, minHeight: (totalHeight / 2) + 1, opacity,
+              top: 0, minHeight: (totalHeight / 2) + 1, opacity,
             }}
-            height={(height + 1)} width={(width + 1)} onMouseEnter={this.hoverHandler}
+            height="50%" width={widthPercent} onMouseEnter={this.hoverHandler}
             onMouseLeave={this.hoverHandler}
           />
         </div>
