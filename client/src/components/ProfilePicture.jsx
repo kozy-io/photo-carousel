@@ -37,23 +37,24 @@ class ProfilePicture extends React.Component {
   }
 
   updateDimensions() {
+    const { totalHeight } = this.state;
     const { threshold, lastThreshold, currWidth } = this.props;
     if (currWidth < lastThreshold) {
       this.setState({
         width: (window.innerWidth / 2),
-        height: (window.innerHeight * 0.6),
+        height: (totalHeight * 0.6),
         widthPercent: '100%',
       });
     } else if (currWidth < threshold && currWidth > lastThreshold) {
       this.setState({
         width: (window.innerWidth / 2),
-        height: (window.innerHeight * 0.6),
+        height: (totalHeight * 0.6),
         widthPercent: '75%',
       });
     } else {
       this.setState({
         width: (window.innerWidth / 2),
-        height: (window.innerHeight * 0.6),
+        height: (totalHeight * 0.6),
         widthPercent: '50%',
       });
     }
@@ -81,7 +82,7 @@ class ProfilePicture extends React.Component {
         <div className="img-hover-zoom">
           <img src={photo} id="profilePicture" className="picture" alt="http://lorempixel.com/1440/960/city/"
             style={{
-              top: 0, minHeight: (totalHeight * 0.5), maxHeight: '60%', opacity,
+              top: 0, minHeight: (totalHeight * 0.6), maxHeight: '60%', opacity,
             }}
             height="60%" width={widthPercent} onMouseEnter={this.hoverHandler}
             onMouseLeave={this.hoverHandler} onClick={this.onClickHandler}
