@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 
 
@@ -14,6 +16,7 @@ class ExtraPictures extends React.Component {
 
     this.updateDimensions = this.updateDimensions.bind(this);
     this.hoverHandler = this.hoverHandler.bind(this);
+    this.onClickHandler = this.onClickHandler.bind(this);
   }
 
   componentDidMount() {
@@ -22,6 +25,12 @@ class ExtraPictures extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateDimensions);
+  }
+
+  onClickHandler({ target }) {
+    const { name } = target;
+    const { clickHandler } = this.props;
+    clickHandler(name);
   }
 
   updateDimensions() {
@@ -75,6 +84,7 @@ class ExtraPictures extends React.Component {
               name="four"
               onMouseEnter={this.hoverHandler}
               onMouseLeave={this.hoverHandler}
+              onClick={this.onClickHandler}
             />
           </div>
         </div>
@@ -93,6 +103,7 @@ class ExtraPictures extends React.Component {
               name="five"
               onMouseEnter={this.hoverHandler}
               onMouseLeave={this.hoverHandler}
+              onClick={this.onClickHandler}
             />
           </div>
         </div>

@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-console */
 import React from 'react';
@@ -6,6 +7,7 @@ import axios from 'axios';
 import ProfilePicture from './ProfilePicture';
 import SubPictures from './SubPictures';
 import ExtraPictures from './ExtraPictures';
+import Slideshow from './Slideshow';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,6 +21,8 @@ class App extends React.Component {
       currWidth: window.innerWidth,
       threshold: (window.innerWidth * 0.7),
       lastThreshold: (window.innerWidth * 0.5),
+      modalView: false,
+      modalFocus: '',
       profileOpacity: 1,
       photoTwoOpacity: 1,
       photoThreeOpacity: 1,
@@ -30,6 +34,8 @@ class App extends React.Component {
     this.getListingPhotos = this.getListingPhotos.bind(this);
     this.hoverHandler = this.hoverHandler.bind(this);
     this.updateDimensions = this.updateDimensions.bind(this);
+    this.clickHandler = this.clickHandler.bind(this);
+    this.exitModal = this.exitModal.bind(this);
   }
 
   componentDidMount() {
@@ -57,6 +63,36 @@ class App extends React.Component {
     this.setState({
       currWidth: window.innerWidth,
       currHeight: window.innerHeight,
+    });
+  }
+
+  clickHandler(focus) {
+    const { modalView, photos } = this.state;
+    let tmp;
+    switch (focus) {
+      case 'profile':
+        tmp = 0;
+        break;
+      case 'two':
+        tmp = 1;
+        break;
+      case 'three':
+        tmp = 2;
+        break;
+      case 'four':
+        tmp = 3;
+        break;
+      case 'five':
+        tmp = 4;
+        break;
+
+      default:
+        break;
+    }
+
+    this.setState({
+      modalView: !modalView,
+      modalFocus: tmp,
     });
   }
 
@@ -117,19 +153,26 @@ class App extends React.Component {
     }
   }
 
+  exitModal() {
+    this.setState({
+      modalView: false,
+    });
+  }
+
   render() {
     const {
       photos, windowHeight, windowWidth, profileOpacity, currWidth, currHeight,
       photoTwoOpacity, photoThreeOpacity, photoFourOpacity, photoFiveOpacity,
-      threshold, lastThreshold,
+      threshold, lastThreshold, modalView, modalFocus, exitModal,
     } = this.state;
     return (
       <div className="photoCarousel">
-        {photos.length > 0
+        {photos.length > 0 && !modalView
           ? (
             <ProfilePicture
               photo={photos[0].photoUrl}
               hoverHandler={this.hoverHandler}
+              clickHandler={this.clickHandler}
               totalWidth={windowWidth}
               totalHeight={windowHeight}
               opacity={profileOpacity}
@@ -140,7 +183,7 @@ class App extends React.Component {
           )
           : undefined
         }
-        {photos.length >= 3 && currWidth > lastThreshold
+        {photos.length >= 3 && currWidth > lastThreshold && !modalView
           ? (
             <SubPictures
               photos={[photos[1].photoUrl, photos[2].photoUrl]}
@@ -149,12 +192,13 @@ class App extends React.Component {
               opacityTwo={photoTwoOpacity}
               opacityThree={photoThreeOpacity}
               hoverHandler={this.hoverHandler}
+              clickHandler={this.clickHandler}
               threshold={threshold}
             />
           )
           : undefined
         }
-        {photos.length >= 5 && currWidth > threshold
+        {photos.length >= 5 && currWidth > threshold && !modalView
           ? (
             <ExtraPictures
               photos={[photos[3].photoUrl, photos[4].photoUrl]}
@@ -163,8 +207,15 @@ class App extends React.Component {
               opacityFour={photoFourOpacity}
               opacityFive={photoFiveOpacity}
               hoverHandler={this.hoverHandler}
+              clickHandler={this.clickHandler}
               threshold={threshold}
             />
+          )
+          : undefined
+        }
+        {modalView && photos.length > 0
+          ? (
+            <Slideshow modalFocus={modalFocus} exitModal={this.exitModal} photos={photos} />
           )
           : undefined
         }

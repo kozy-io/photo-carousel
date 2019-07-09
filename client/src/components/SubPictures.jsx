@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
-
 
 class SubPictures extends React.Component {
   constructor(props) {
@@ -16,6 +16,7 @@ class SubPictures extends React.Component {
 
     this.updateDimensions = this.updateDimensions.bind(this);
     this.hoverHandler = this.hoverHandler.bind(this);
+    this.onClickHandler = this.onClickHandler.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +25,12 @@ class SubPictures extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateDimensions);
+  }
+
+  onClickHandler({ target }) {
+    const { name } = target;
+    const { clickHandler } = this.props;
+    clickHandler(name);
   }
 
   updateDimensions() {
@@ -89,6 +96,7 @@ class SubPictures extends React.Component {
               name="two"
               onMouseEnter={this.hoverHandler}
               onMouseLeave={this.hoverHandler}
+              onClick={this.onClickHandler}
             />
           </div>
         </div>
@@ -107,6 +115,7 @@ class SubPictures extends React.Component {
               name="three"
               onMouseEnter={this.hoverHandler}
               onMouseLeave={this.hoverHandler}
+              onClick={this.onClickHandler}
             />
           </div>
         </div>
