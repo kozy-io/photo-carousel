@@ -192,7 +192,6 @@ svg:not(:root) {
 
 @media (min-width: 744px) {
     .photoContainer {
-        height: 65vh !important;
         width: 100vw !important;
         display: table-cell !important;
         padding: 40px !important;

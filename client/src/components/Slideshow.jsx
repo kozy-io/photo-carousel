@@ -19,6 +19,7 @@ class Slideshow extends React.Component {
     this.nextPictureHandler = this.nextPictureHandler.bind(this);
     this.prevPictureHandler = this.prevPictureHandler.bind(this);
     this.logKey = this.logKey.bind(this);
+    this.changeFocus = this.changeFocus.bind(this);
   }
 
   componentDidMount() {
@@ -115,6 +116,10 @@ class Slideshow extends React.Component {
     }
   }
 
+  changeFocus(event) {
+    console.log(event);
+  }
+
   render() {
     const { exitModal, modalFocus, photos } = this.props;
     const { currIndex, translationAmount } = this.state;
@@ -161,7 +166,6 @@ class Slideshow extends React.Component {
                             </button>
                           </div>
                           <img className="hiddenPicture" aria-hidden="true" src={photos[currIndex].photoUrl} alt="" />
-                          <span>
                             <div>
                               <img
                                 src={photos[currIndex].photoUrl}
@@ -173,7 +177,6 @@ class Slideshow extends React.Component {
                                 }}
                               />
                             </div>
-                          </span>
                         </div>
                       </div>
                       <div className="miniCarouselContainer">
@@ -190,15 +193,15 @@ class Slideshow extends React.Component {
                                         element.priority === currIndex
                                           ? (
                                             <li className="_1y6wdia" key={element.priority}>
-                                              <button data-photo-index="0" className="_1umg7png" aria-label={`1/${photos.length}: ${photos[0].caption}`}>
+                                              <button index="0" className="_1umg7png" aria-label={`1/${photos.length}: ${photos[0].caption}`}>
                                                 <img alt="" src={photos[0].photoUrl} className="_u6tx3c" />
                                               </button>
                                             </li>
                                           )
                                           : (
-                                            <li className="_12n0r6ug" key={element.priority}>
-                                              <button data-photo-index={element.priority} className="_hwcst" aria-label={`${element.priority}/${photos.length}: ${photos[element.priority].caption}`}>
-                                                <img alt="" src={photos[element.priority].photoUrl} className="_u6tx3c" />
+                                            <li className="_12n0r6ug" key={element.priority} onClick={this.changeFocus}>
+                                              <button index={element.priority} className="_hwcst" aria-label={`${element.priority}/${photos.length}: ${photos[element.priority].caption}`}>
+                                                <img alt="" src={photos[element.priority].photoUrl} index={element.priority} className="_u6tx3c" />
                                               </button>
                                             </li>
                                           )
