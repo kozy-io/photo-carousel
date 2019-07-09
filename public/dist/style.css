@@ -1,5 +1,37 @@
 body {
-    margin: 0px;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #484848;
+    background-color: #fff;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+    -webkit-appearance: button;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: buttontext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    background-color: buttonface;
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 11px system-ui;
+    padding: 1px 7px 2px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+    border-image: initial;
 }
 
 .img-hover-zoom {
@@ -73,3 +105,108 @@ body {
     transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, -webkit-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, opacity 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
 } 
 
+.modal {
+    position: fixed !important;
+    top: 0px !important;
+    right: 0px !important;
+    bottom: 0px !important;
+    left: 0px !important;
+    background: rgb(255, 255, 255) !important;
+}
+
+.slideshowModal {
+    height: 100% !important;
+    overflow-y: auto !important;
+}
+
+.slideshowElements {
+    display: table !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.slideshowContainer {
+    display: table-row !important;
+}
+
+.exitButton {
+    right: 0px !important;
+    margin-top: 40px !important;
+    margin-right: 40px !important;
+    position: absolute !important;
+    z-index: 4 !important;
+}
+
+.hiddenButton {
+    cursor: pointer !important;
+    background-color: transparent !important;
+    color: buttontext !important;
+    border: 0px !important;
+    display: block !important;
+}
+
+.hiddenButton:focus {
+    outline: 0 !important;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+.photoContainer {
+    height: 65vh !important;
+    width: 100vw !important;
+    padding: 64px !important;
+    display: table-cell !important;
+    vertical-align: middle !important;
+}
+
+.photoDisplay {
+    height: 100% !important;
+    -webkit-box-pack: center !important;
+    display: flex !important;
+    position: relative !important;
+    justify-content: center !important;
+}
+
+.leftButton {
+    width: 50% !important;
+    cursor: pointer !important;
+    top: 0px !important;
+    height: 100% !important;
+    font-size: 0.5em !important;
+    position: absolute !important;
+    z-index: 1 !important;
+    left: 0px !important;
+    text-align: left !important;
+    background: none !important;
+    border-width: 0px !important;
+    border-style: initial !important;
+    border-color: initial !important;
+    border-image: initial !important;
+}
+
+.rightButton {
+    width: 50% !important;
+    cursor: pointer !important;
+    top: 0px !important;
+    height: 100% !important;
+    font-size: 0.5em !important;
+    position: absolute !important;
+    z-index: 1 !important;
+    text-align: right !important;
+    right: 0px !important;
+    background: none !important;
+    border-width: 0px !important;
+    border-style: initial !important;
+    border-color: initial !important;
+    border-image: initial !important;
+}
+
+.leftButton:focus {
+    outline: 0 !important;
+}
+
+.rightButton:focus {
+    outline: 0 !important;
+}
