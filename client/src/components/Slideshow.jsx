@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/prop-types */
@@ -17,11 +18,15 @@ class Slideshow extends React.Component {
 
     this.nextPictureHandler = this.nextPictureHandler.bind(this);
     this.prevPictureHandler = this.prevPictureHandler.bind(this);
+    this.logKey = this.logKey.bind(this);
   }
 
   componentDidMount() {
     const { currIndex, translationAmount } = this.state;
     let tmp = translationAmount;
+
+    window.addEventListener('keydown', this.logKey);
+
     switch (currIndex) {
       case 0:
         tmp = 8;
@@ -41,6 +46,18 @@ class Slideshow extends React.Component {
       this.setState({
         translationAmount: tmp,
       });
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.logKey);
+  }
+
+  logKey({ code }) {
+    if (code === 'ArrowRight') {
+      this.nextPictureHandler();
+    } else if (code === 'ArrowLeft') {
+      this.prevPictureHandler();
     }
   }
 
@@ -172,14 +189,14 @@ class Slideshow extends React.Component {
                                       {photos.map(element => (
                                         element.priority === currIndex
                                           ? (
-                                            <li className="_1y6wdia">
+                                            <li className="_1y6wdia" key={element.priority}>
                                               <button data-photo-index="0" className="_1umg7png" aria-label={`1/${photos.length}: ${photos[0].caption}`}>
                                                 <img alt="" src={photos[0].photoUrl} className="_u6tx3c" />
                                               </button>
                                             </li>
                                           )
                                           : (
-                                            <li className="_12n0r6ug">
+                                            <li className="_12n0r6ug" key={element.priority}>
                                               <button data-photo-index={element.priority} className="_hwcst" aria-label={`${element.priority}/${photos.length}: ${photos[element.priority].caption}`}>
                                                 <img alt="" src={photos[element.priority].photoUrl} className="_u6tx3c" />
                                               </button>

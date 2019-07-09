@@ -287,6 +287,10 @@ svg:not(:root) {
     }
 }
 
+.miniCarouselContainer {
+    overflow: hidden;
+}
+
 @media (min-width: 1128px) {
     .miniCarouselPad {
         width: 100% !important;
