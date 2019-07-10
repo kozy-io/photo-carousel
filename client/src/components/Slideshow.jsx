@@ -76,6 +76,10 @@ class Slideshow extends React.Component {
       amt = -34;
     }
 
+    if (currIndex === photos.length - 2) {
+      amt = translationAmount;
+    }
+
     if (currIndex !== photos.length - 1) {
       this.setState({
         currIndex: tmp,
@@ -105,6 +109,10 @@ class Slideshow extends React.Component {
 
     if (currIndex === 3) {
       amt = -34;
+		}
+		
+		if (currIndex === photos.length - 1) {
+      amt = translationAmount;
     }
 
     if (currIndex !== 0) {
