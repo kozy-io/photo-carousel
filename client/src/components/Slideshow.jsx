@@ -109,9 +109,9 @@ class Slideshow extends React.Component {
 
     if (currIndex === 3) {
       amt = -34;
-		}
-		
-		if (currIndex === photos.length - 1) {
+    }
+
+    if (currIndex === photos.length - 1) {
       amt = translationAmount;
     }
 
@@ -128,8 +128,41 @@ class Slideshow extends React.Component {
     }
   }
 
-  changeFocus(event) {
-    console.log(event);
+  changeFocus({ target }) {
+    const { currIndex, translationAmount } = this.state;
+    const clicked = Number(target.getAttribute('index'));
+    let tmp = translationAmount;
+    let amount = 0;
+
+    switch (clicked) {
+      case 0:
+        tmp = 8;
+        break;
+      case 1:
+        tmp = 8;
+        break;
+      case 2:
+        tmp = -34;
+        break;
+      case 3:
+        tmp = -114;
+        break;
+      default:
+        if (clicked < currIndex) {
+          amount = currIndex - clicked;
+          tmp += (amount * 80);
+        } else {
+          amount = clicked - currIndex;
+          tmp -= (amount * 80);
+        }
+        break;
+    }
+
+    console.log(amount);
+    this.setState({
+      currIndex: clicked,
+      translationAmount: tmp,
+    });
   }
 
   render() {
