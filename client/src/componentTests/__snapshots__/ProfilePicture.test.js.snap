@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfilePicture should render correctly 1`] = `
+<div
+  className="profileContainer"
+>
+  <div
+    className="img-hover-zoom"
+  >
+    <img
+      alt="http://lorempixel.com/1440/960/city/"
+      className="picture"
+      height="60%"
+      id="profilePicture"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      style={
+        Object {
+          "maxHeight": "60%",
+          "minHeight": "60%",
+          "opacity": undefined,
+          "top": 0,
+        }
+      }
+      width="50%"
+    />
+  </div>
+</div>
+`;

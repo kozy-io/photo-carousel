@@ -61,6 +61,7 @@ class App extends React.Component {
         console.log(error);
       });
   }
+  /* istanbul ignore next */
 
   updateDimensions() {
     this.setState({
@@ -170,7 +171,7 @@ class App extends React.Component {
     } = this.state;
     return (
       <div className="photoCarousel">
-        {photos.length > 0 && !modalView
+        {photos.length > 0
           ? (
             <ProfilePicture
               photo={photos[0].photoUrl}
@@ -186,7 +187,7 @@ class App extends React.Component {
           )
           : undefined
         }
-        {photos.length >= 3 && currWidth > lastThreshold && !modalView
+        {photos.length >= 3 && currWidth > lastThreshold
           ? (
             <SubPictures
               photos={[photos[1].photoUrl, photos[2].photoUrl]}
@@ -201,7 +202,7 @@ class App extends React.Component {
           )
           : undefined
         }
-        {photos.length >= 5 && currWidth > threshold && !modalView
+        {photos.length >= 5 && currWidth > threshold
           ? (
             <ExtraPictures
               photos={[photos[3].photoUrl, photos[4].photoUrl]}
