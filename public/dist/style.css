@@ -473,6 +473,10 @@ svg:not(:root) {
     border-radius: 4px !important;
 }
 
+._12n0r6ug:focus {
+    outline: none;
+}
+
 @media (min-width: 1440px) {
     ._hwcst {
         width: 64px !important;
@@ -498,6 +502,10 @@ svg:not(:root) {
     margin: 0px !important;
     padding: 0px !important;
     border-radius: 4px !important;
+}
+
+._hwcst:hover {
+    opacity: 1 !important;
 }
 
 @media (min-width: 1440px) {
