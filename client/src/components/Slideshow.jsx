@@ -68,11 +68,11 @@ class Slideshow extends React.Component {
     const tmp = currIndex + 1;
     let amt = translationAmount - 80;
 
-    if (currIndex === 0 || currIndex === 1 || currIndex === photos.length - 1) {
+    if (currIndex === 0 || currIndex === photos.length - 1) {
       amt = 8;
     }
 
-    if (currIndex === 2) {
+    if (currIndex === 1) {
       amt = -34;
     }
 
@@ -99,8 +99,12 @@ class Slideshow extends React.Component {
       amt = -34 - (photos.length - 4) * 80;
     }
 
-    if (currIndex === 1 || currIndex === 2 || currIndex === 3) {
+    if (currIndex === 1 || currIndex === 2) {
       amt = 8;
+    }
+
+    if (currIndex === 3) {
+      amt = -34;
     }
 
     if (currIndex !== 0) {
@@ -166,17 +170,17 @@ class Slideshow extends React.Component {
                             </button>
                           </div>
                           <img className="hiddenPicture" aria-hidden="true" src={photos[currIndex].photoUrl} alt="" />
-                            <div>
-                              <img
-                                src={photos[currIndex].photoUrl}
-                                alt=""
-                                onClick={this.nextPictureHandler}
-                                data-veloute="slideshow-image"
-                                style={{
-                                  maxHeight: '55vh', objectFit: 'cover', cursor: 'pointer', zIndex: 2, borderRadius: 16, position: 'absolute', maxWidth: '85%', margin: '0px auto', top: 0, left: 0, right: 0, bottom: 0,
-                                }}
-                              />
-                            </div>
+                          <div>
+                            <img
+                              src={photos[currIndex].photoUrl}
+                              alt=""
+                              onClick={this.nextPictureHandler}
+                              data-veloute="slideshow-image"
+                              style={{
+                                maxHeight: '75vh', objectFit: 'cover', cursor: 'pointer', zIndex: 2, borderRadius: 16, position: 'absolute', maxWidth: '85%', margin: '0px auto', top: 0, left: 0, right: 0, bottom: 0,
+                              }}
+                            />
+                          </div>
                         </div>
                       </div>
                       <div className="miniCarouselContainer">
@@ -185,6 +189,7 @@ class Slideshow extends React.Component {
                             <div className="miniCarouselOuter">
                               <div className="miniCarouselInner">
                                 <div />
+                                <div className="leftEdge" />
                                 <div className="rightEdge" />
                                 <div className="imageCenterer">
                                   <div className="_zf7q4">
@@ -193,8 +198,8 @@ class Slideshow extends React.Component {
                                         element.priority === currIndex
                                           ? (
                                             <li className="_1y6wdia" key={element.priority}>
-                                              <button index="0" className="_1umg7png" aria-label={`1/${photos.length}: ${photos[0].caption}`}>
-                                                <img alt="" src={photos[0].photoUrl} className="_u6tx3c" />
+                                              <button index="0" className="_1umg7png" aria-label={`1/${photos.length}: ${photos[element.priority].caption}`}>
+                                                <img alt="" src={photos[element.priority].photoUrl} className="_u6tx3c" />
                                               </button>
                                             </li>
                                           )
