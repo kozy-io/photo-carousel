@@ -158,7 +158,6 @@ class Slideshow extends React.Component {
         break;
     }
 
-    console.log(amount);
     this.setState({
       currIndex: clicked,
       translationAmount: tmp,

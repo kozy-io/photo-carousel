@@ -1,0 +1,278 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slideshow should render correctly 1`] = `
+<div>
+  <div>
+    <div
+      dir="ltr"
+    >
+      <div
+        className="modal"
+        role="dialog"
+        style={
+          Object {
+            "zIndex": 2000,
+          }
+        }
+      >
+        <div
+          className="slideshowModal"
+          data-veloute="slideshow-modal"
+        >
+          <div
+            className="slideshowElements"
+          >
+            <div
+              className="slideshowContainer"
+            >
+              <div>
+                <div>
+                  <div
+                    className="exitButton"
+                  >
+                    <button
+                      aria-busy="false"
+                      className="hiddenButton"
+                      style={
+                        Object {
+                          "margin": -32,
+                          "padding": 32,
+                        }
+                      }
+                      type="button"
+                    >
+                      <svg
+                        aria-label="Close"
+                        focusable="false"
+                        role="img"
+                        style={
+                          Object {
+                            "display": "block",
+                            "fill": "rgb(72, 72, 72)",
+                            "height": 24,
+                            "width": 24,
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="m23.25 24c-.19 0-.38-.07-.53-.22l-10.72-10.72-10.72 10.72c-.29.29-.77.29-1.06 0s-.29-.77 0-1.06l10.72-10.72-10.72-10.72c-.29-.29-.29-.77 0-1.06s.77-.29 1.06 0l10.72 10.72 10.72-10.72c.29-.29.77-.29 1.06 0s .29.77 0 1.06l-10.72 10.72 10.72 10.72c.29.29.29.77 0 1.06-.15.15-.34.22-.53.22"
+                          fillRule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="full"
+              >
+                <div
+                  className="photoContainer"
+                >
+                  <div
+                    className="photoDisplay"
+                  >
+                    <div>
+                      <button
+                        className="leftButton"
+                        name="Previous"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          name="Previous"
+                          role="presentation"
+                          style={
+                            Object {
+                              "fill": "rgb(72, 72, 72)",
+                              "height": 24,
+                              "width": 24,
+                            }
+                          }
+                          viewBox="0 0 18 18"
+                        >
+                          <path
+                            d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z"
+                            fillRule="evenodd"
+                            name="Previous"
+                          />
+                        </svg>
+                      </button>
+                      <button
+                        className="rightButton"
+                        name="Next"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          name="Next"
+                          role="presentation"
+                          style={
+                            Object {
+                              "fill": "rgb(72, 72, 72)",
+                              "height": 24,
+                              "width": 24,
+                            }
+                          }
+                          viewBox="0 0 18 18"
+                        >
+                          <path
+                            d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z"
+                            fillRule="evenodd"
+                            name="Next"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                    <img
+                      alt=""
+                      aria-hidden="true"
+                      className="hiddenPicture"
+                      src="http://lorempixel.com/1440/960/city"
+                    />
+                    <div>
+                      <img
+                        alt=""
+                        data-veloute="slideshow-image"
+                        onClick={[Function]}
+                        src="http://lorempixel.com/1440/960/city"
+                        style={
+                          Object {
+                            "borderRadius": 16,
+                            "bottom": 0,
+                            "cursor": "pointer",
+                            "left": 0,
+                            "margin": "0px auto",
+                            "maxHeight": "75vh",
+                            "maxWidth": "85%",
+                            "objectFit": "cover",
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "zIndex": 2,
+                          }
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="miniCarouselContainer"
+                >
+                  <div
+                    className="miniCarouselPad"
+                  >
+                    <div
+                      className="miniCarouselBottom"
+                    >
+                      <div
+                        className="miniCarouselOuter"
+                      >
+                        <div
+                          className="miniCarouselInner"
+                        >
+                          <div />
+                          <div
+                            className="leftEdge"
+                          />
+                          <div
+                            className="rightEdge"
+                          />
+                          <div
+                            className="imageCenterer"
+                          >
+                            <div
+                              className="_zf7q4"
+                            >
+                              <ul
+                                className="_conlnu"
+                                style={
+                                  Object {
+                                    "transform": "translateX(8px)",
+                                  }
+                                }
+                              >
+                                <li
+                                  className="_12n0r6ug"
+                                  key="0"
+                                  onClick={[Function]}
+                                >
+                                  <button
+                                    aria-label="0/2: Et esse laudantium sunt et."
+                                    className="_hwcst"
+                                    index={0}
+                                  >
+                                    <img
+                                      alt=""
+                                      className="_u6tx3c"
+                                      index={0}
+                                      src="http://lorempixel.com/1440/960/city"
+                                    />
+                                  </button>
+                                </li>
+                                <li
+                                  className="_1y6wdia"
+                                  key="1"
+                                >
+                                  <button
+                                    aria-label="1/2: Et esse laudantium sunt et."
+                                    className="_1umg7png"
+                                    index="0"
+                                  >
+                                    <img
+                                      alt=""
+                                      className="_u6tx3c"
+                                      src="http://lorempixel.com/1440/960/city"
+                                    />
+                                  </button>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="_yoviva"
+                  >
+                    <div
+                      style={
+                        Object {
+                          "marginBottom": "16px",
+                        }
+                      }
+                    >
+                      <div
+                        className="_1p3joamp"
+                      >
+                        2
+                        /
+                        2
+                      </div>
+                    </div>
+                    <div
+                      className="_1dcp06s"
+                    >
+                      <div
+                        className="_czm8crp"
+                      >
+                        Et esse laudantium sunt et.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
