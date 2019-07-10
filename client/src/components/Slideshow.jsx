@@ -109,9 +109,9 @@ class Slideshow extends React.Component {
 
     if (currIndex === 3) {
       amt = -34;
-		}
-		
-		if (currIndex === photos.length - 1) {
+    }
+
+    if (currIndex === photos.length - 1) {
       amt = translationAmount;
     }
 
