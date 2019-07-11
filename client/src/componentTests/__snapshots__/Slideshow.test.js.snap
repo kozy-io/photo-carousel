@@ -139,6 +139,7 @@ exports[`Slideshow should render correctly 1`] = `
                       <img
                         alt=""
                         data-veloute="slideshow-image"
+                        id="mainPicture"
                         onClick={[Function]}
                         src="http://lorempixel.com/1440/960/city"
                         style={

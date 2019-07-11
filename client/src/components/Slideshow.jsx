@@ -214,6 +214,7 @@ class Slideshow extends React.Component {
                             <img
                               src={photos[currIndex].photoUrl}
                               alt=""
+                              id="mainPicture"
                               onClick={this.nextPictureHandler}
                               data-veloute="slideshow-image"
                               style={{
