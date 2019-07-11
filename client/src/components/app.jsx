@@ -61,7 +61,6 @@ class App extends React.Component {
         console.log(error);
       });
   }
-  /* istanbul ignore next */
 
   updateDimensions() {
     this.setState({
