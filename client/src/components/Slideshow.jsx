@@ -165,10 +165,11 @@ class Slideshow extends React.Component {
   }
 
   render() {
-    const { exitModal, modalFocus, photos } = this.props;
+    const { exitModal, modalFocus, photos, modalView } = this.props;
     const { currIndex, translationAmount } = this.state;
+    console.log(modalFocus);
     return (
-      <div>
+      <div className="topmostSlideshow" style={{ visibility: modalView }}>
         <div>
           <div dir="ltr">
             <div role="dialog" className="modal" style={{ zIndex: 2000 }}>

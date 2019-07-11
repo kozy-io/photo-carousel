@@ -82,9 +82,9 @@ class ProfilePicture extends React.Component {
         <div className="img-hover-zoom">
           <img src={photo} id="profilePicture" className="picture" alt="http://lorempixel.com/1440/960/city/"
             style={{
-              top: 0, minHeight: '60%', maxHeight: '60%', opacity,
+              top: 0, minHeight: totalHeight * 0.4, maxHeight: '60%', opacity,
             }}
-            height="60%" width={widthPercent} onMouseEnter={this.hoverHandler}
+            height={totalHeight * 0.6} width={widthPercent} onMouseEnter={this.hoverHandler}
             onMouseLeave={this.hoverHandler} onClick={this.onClickHandler}
           />
         </div>
