@@ -80,7 +80,7 @@ class SubPictures extends React.Component {
       photos, totalHeight, totalWidth, opacityTwo, opacityThree,
     } = this.props;
     return (
-      <div className="subPictureColumn" style={{ left: position, height: '60%', minHeight: '60%' }}>
+      <div className="subPictureColumn" style={{ left: position, height: totalHeight * 0.6, minHeight: '60%' }}>
         <div className="img-hover-zoom">
           <div className="entryOne">
             <img
