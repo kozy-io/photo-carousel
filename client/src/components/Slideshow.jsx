@@ -6,6 +6,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
+import styles from './style/Slideshow.css';
 
 class Slideshow extends React.Component {
   constructor(props) {
@@ -167,19 +168,18 @@ class Slideshow extends React.Component {
   render() {
     const { exitModal, modalFocus, photos, modalView } = this.props;
     const { currIndex, translationAmount } = this.state;
-    console.log(modalFocus);
     return (
-      <div className="topmostSlideshow" style={{ visibility: modalView }}>
+      <div className={styles.topmostSlideshow} style={{ visibility: modalView }}>
         <div>
           <div dir="ltr">
-            <div role="dialog" className="modal" style={{ zIndex: 2000 }}>
-              <div data-veloute="slideshow-modal" className="slideshowModal">
-                <div className="slideshowElements">
-                  <div className="slideshowContainer">
+            <div role="dialog" className={styles.modal} style={{ zIndex: 2000 }}>
+              <div data-veloute="slideshow-modal" className={styles.slideshowModal}>
+                <div className={styles.slideshowElements}>
+                  <div className={styles.slideshowContainer}>
                     <div>
                       <div>
-                        <div className="exitButton">
-                          <button type="button" className="hiddenButton" aria-busy="false" style={{ padding: 32, margin: -32 }} onClick={exitModal}>
+                        <div className={styles.exitButton}>
+                          <button type="button" className={styles.hiddenButton} aria-busy="false" style={{ padding: 32, margin: -32 }} onClick={exitModal}>
                             <svg
                               viewBox="0 0 24 24"
                               role="img"
@@ -196,21 +196,21 @@ class Slideshow extends React.Component {
                       </div>
                     </div>
                     <div className="full">
-                      <div className="photoContainer">
-                        <div className="photoDisplay">
+                      <div className={styles.photoContainer}>
+                        <div className={styles.photoDisplay}>
                           <div>
-                            <button type="button" name="Previous" className="leftButton" onClick={this.prevPictureHandler}>
+                            <button type="button" name="Previous" className={styles.leftButton} onClick={this.prevPictureHandler}>
                               <svg viewBox="0 0 18 18" name="Previous" role="presentation" aria-hidden="true" focusable="false" style={{ height: 24, width: 24, fill: 'rgb(72, 72, 72)' }}>
                                 <path name="Previous" d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fillRule="evenodd" />
                               </svg>
                             </button>
-                            <button type="button" name="Next" className="rightButton" onClick={this.nextPictureHandler}>
+                            <button type="button" name="Next" className={styles.rightButton} onClick={this.nextPictureHandler}>
                               <svg viewBox="0 0 18 18" name="Next" role="presentation" aria-hidden="true" focusable="false" style={{ height: 24, width: 24, fill: 'rgb(72, 72, 72)' }}>
                                 <path name="Next" d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fillRule="evenodd" />
                               </svg>
                             </button>
                           </div>
-                          <img className="hiddenPicture" aria-hidden="true" src={photos[currIndex].photoUrl} alt="" />
+                          <img className={styles.hiddenPicture} aria-hidden="true" src={photos[currIndex].photoUrl} alt="" />
                           <div>
                             <img
                               src={photos[currIndex].photoUrl}
@@ -225,30 +225,30 @@ class Slideshow extends React.Component {
                           </div>
                         </div>
                       </div>
-                      <div className="miniCarouselContainer">
-                        <div className="miniCarouselPad">
-                          <div className="miniCarouselBottom">
-                            <div className="miniCarouselOuter">
-                              <div className="miniCarouselInner">
+                      <div className={styles.miniCarouselContainer}>
+                        <div className={styles.miniCarouselPad}>
+                          <div className={styles.miniCarouselBottom}>
+                            <div className={styles.miniCarouselOuter}>
+                              <div className={styles.miniCarouselInner}>
                                 <div />
-                                <div className="leftEdge" />
-                                <div className="rightEdge" />
-                                <div className="imageCenterer">
-                                  <div className="_zf7q4">
-                                    <ul className="_conlnu" style={{ transform: `translateX(${(translationAmount)}px)` }}>
+                                <div className={styles.leftEdge} />
+                                <div className={styles.rightEdge} />
+                                <div className={styles.imageCenterer}>
+                                  <div className={styles.miniContainer}>
+                                    <ul className={styles.translator} style={{ transform: `translateX(${(translationAmount)}px)` }}>
                                       {photos.map(element => (
                                         element.priority === currIndex
                                           ? (
-                                            <li className="_1y6wdia" key={element.priority}>
-                                              <button index="0" className="_1umg7png" aria-label={`1/${photos.length}: ${photos[element.priority].caption}`}>
-                                                <img alt="" src={photos[element.priority].photoUrl} className="_u6tx3c" />
+                                            <li className={styles.miniFocus} key={element.priority}>
+                                              <button index="0" className={styles.miniFocusButton} aria-label={`1/${photos.length}: ${photos[element.priority].caption}`}>
+                                                <img alt="" src={photos[element.priority].photoUrl} className={styles.miniImage} />
                                               </button>
                                             </li>
                                           )
                                           : (
-                                            <li className="_12n0r6ug" key={element.priority} onClick={this.changeFocus}>
-                                              <button index={element.priority} className="_hwcst" aria-label={`${element.priority}/${photos.length}: ${photos[element.priority].caption}`}>
-                                                <img alt="" src={photos[element.priority].photoUrl} index={element.priority} className="_u6tx3c" />
+                                            <li className={styles.miniEntry} key={element.priority} onClick={this.changeFocus}>
+                                              <button index={element.priority} className={styles.miniEntryButton} aria-label={`${element.priority}/${photos.length}: ${photos[element.priority].caption}`}>
+                                                <img alt="" src={photos[element.priority].photoUrl} index={element.priority} className={styles.miniImage} />
                                               </button>
                                             </li>
                                           )
@@ -260,14 +260,14 @@ class Slideshow extends React.Component {
                             </div>
                           </div>
                         </div>
-                        <div className="_yoviva">
+                        <div className={styles.descriptionContainer}>
                           <div style={{ marginBottom: '16px' }}>
-                            <div className="_1p3joamp">
+                            <div className={styles.indexCounter}>
                               {currIndex + 1}/{photos.length}
                             </div>
                           </div>
-                          <div className="_1dcp06s">
-                            <div className="_czm8crp">
+                          <div className={styles.captionContainer}>
+                            <div className={styles.caption}>
                               {photos[currIndex].caption}
                             </div>
                           </div>

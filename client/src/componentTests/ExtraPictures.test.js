@@ -4,7 +4,7 @@ import ExtraPictures from '../components/ExtraPictures';
 
 describe('ExtraPictures', () => {
   it('should render correctly', () => {
-    const component = shallow(<ExtraPictures photos={ ['http://lorempixel.com/1440/960/city', 'http://lorempixel.com/1440/960/city'] }/>);
+    const component = shallow(<ExtraPictures photos={ ['http://lorempixel.com/1440/960/city', 'http://lorempixel.com/1440/960/city'] } tinyPhotos={['http://lorempixel.com/60/40/city', 'http://lorempixel.com/60/40/city']} />);
 
     component.setState({
       opacityFour: 1, opacityFive: 1, threshold: 1008, totalHeight: 766, totalWidth: 1440,
@@ -13,17 +13,41 @@ describe('ExtraPictures', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should handle hover correctly', () => {
-    const mockCallBack = jest.fn();
-    const component = shallow(<ExtraPictures photos={['http://lorempixel.com/1440/960/city', 'http://lorempixel.com/1440/960/city']} hoverHandler={mockCallBack} />);
+  it('should load extra pictures progressively on mount', () => {
+    const spy = jest.spyOn(ExtraPictures.prototype, 'progressiveLoading');
+    const component = shallow(<ExtraPictures photos={['http://lorempixel.com/1440/960/city', 'http://lorempixel.com/1440/960/city']} tinyPhotos={['http://lorempixel.com/60/40/city', 'http://lorempixel.com/60/40/city']} />);
 
-    component.instance().hoverHandler({ target: { name: 'four' } });
-    expect(mockCallBack.mock.calls.length).toEqual(1);
+    component.instance().progressiveLoading();
+    expect(spy).toHaveBeenCalled();
   });
 
-  it('should handle click correctly', () => {
+  it('should handle hover correctly', () => {
     const mockCallBack = jest.fn();
-    const component = shallow(<ExtraPictures photos={['http://lorempixel.com/1440/960/city', 'http://lorempixel.com/1440/960/city']} onClickHandler={mockCallBack} />);
+    const component = shallow(<ExtraPictures photos={['http://lorempixel.com/1440/960/city', 'http://lorempixel.com/1440/960/city']} hoverHandler={mockCallBack} tinyPhotos={['http://lorempixel.com/60/40/city', 'http://lorempixel.com/60/40/city']} />);
+
+    component.setState({
+      hoverFour: false,
+    });
+
+    component.instance().hoverHandler({ target: { name: 'four' } });
+    expect(component.state('hoverFour')).toEqual(true);
+  });
+
+  it('should handle hovering off correctly', () => {
+    const mockCallBack = jest.fn();
+    const component = shallow(<ExtraPictures photos={['http://lorempixel.com/1440/960/city', 'http://lorempixel.com/1440/960/city']} hoverHandler={mockCallBack} tinyPhotos={['http://lorempixel.com/60/40/city', 'http://lorempixel.com/60/40/city']} />);
+
+    component.setState({
+      hoverFour: true,
+    });
+
+    component.instance().hoverHandler({ target: { name: 'four' } });
+    expect(component.state('hoverFour')).toEqual(false);
+  });
+
+  it('should handle clicking on the fourth or fifth picture correctly', () => {
+    const mockCallBack = jest.fn();
+    const component = shallow(<ExtraPictures photos={['http://lorempixel.com/1440/960/city', 'http://lorempixel.com/1440/960/city']} onClickHandler={mockCallBack} tinyPhotos={['http://lorempixel.com/60/40/city', 'http://lorempixel.com/60/40/city']} />);
     component.setProps({ clickHandler: mockCallBack });
 
     component.instance().onClickHandler({ target: { name: 'five' } });
@@ -31,7 +55,7 @@ describe('ExtraPictures', () => {
   });
 
   it('should handle window resize', () => {
-    const component = shallow(<ExtraPictures photos={['http://lorempixel.com/1440/960/city', 'http://lorempixel.com/1440/960/city']} />);
+    const component = shallow(<ExtraPictures photos={['http://lorempixel.com/1440/960/city', 'http://lorempixel.com/1440/960/city']} tinyPhotos={['http://lorempixel.com/60/40/city', 'http://lorempixel.com/60/40/city']} />);
 
     const spy = jest.spyOn(component.instance(), 'updateDimensions');
 

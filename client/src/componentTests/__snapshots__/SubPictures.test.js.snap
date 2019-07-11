@@ -5,30 +5,32 @@ exports[`SubPictures should render correctly 1`] = `
   className="subPictureColumn"
   style={
     Object {
-      "height": "60%",
+      "height": NaN,
       "left": "50%",
-      "minHeight": "60%",
+      "minHeight": NaN,
     }
   }
 >
   <div
-    className="img-hover-zoom"
+    className="imgHoverZoom"
   >
     <div
       className="entryOne"
     >
       <img
-        alt="http://lorempixel.com/1440/960/city/"
-        className="subPicture"
-        height="50%"
+        alt=""
+        className="subPicture blur"
+        data-src="http://lorempixel.com/1440/960/city"
+        height={NaN}
         id="subPictures"
         name="two"
         onClick={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        src="http://lorempixel.com/1440/960/city"
+        src="http://lorempixel.com/60/40/city"
         style={
           Object {
+            "background": "url(http://lorempixel.com/60/40/city)",
             "minHeight": NaN,
             "opacity": undefined,
             "top": 0,
@@ -39,23 +41,25 @@ exports[`SubPictures should render correctly 1`] = `
     </div>
   </div>
   <div
-    className="img-hover-zoom"
+    className="imgHoverZoom"
   >
     <div
       className="entryTwo"
     >
       <img
-        alt="http://lorempixel.com/1440/960/city/"
-        className="subPicture"
-        height="50%"
+        alt=""
+        className="subPicture blur"
+        data-src="http://lorempixel.com/1440/960/city"
+        height={NaN}
         id="subPictures"
         name="three"
         onClick={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        src="http://lorempixel.com/1440/960/city"
+        src="http://lorempixel.com/60/40/city"
         style={
           Object {
+            "background": "url(http://lorempixel.com/60/40/city)",
             "minHeight": NaN,
             "opacity": undefined,
             "top": 0,

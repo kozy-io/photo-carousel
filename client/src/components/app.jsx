@@ -8,6 +8,7 @@ import ProfilePicture from './ProfilePicture';
 import SubPictures from './SubPictures';
 import ExtraPictures from './ExtraPictures';
 import Slideshow from './Slideshow';
+import styles from './style/App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -181,6 +182,7 @@ class App extends React.Component {
           ? (
             <ProfilePicture
               photo={photos[0].photoUrl}
+              tinyPhoto={photos[0].tinyPhotoUrl}
               hoverHandler={this.hoverHandler}
               clickHandler={this.clickHandler}
               totalWidth={windowWidth}
@@ -197,6 +199,7 @@ class App extends React.Component {
           ? (
             <SubPictures
               photos={[photos[1].photoUrl, photos[2].photoUrl]}
+              tinyPhotos={[photos[1].tinyPhotoUrl, photos[2].tinyPhotoUrl]}
               totalWidth={windowWidth}
               totalHeight={windowHeight}
               opacityTwo={photoTwoOpacity}
@@ -212,6 +215,7 @@ class App extends React.Component {
           ? (
             <ExtraPictures
               photos={[photos[3].photoUrl, photos[4].photoUrl]}
+              tinyPhotos={[photos[3].tinyPhotoUrl, photos[4].tinyPhotoUrl]}
               totalWidth={windowWidth}
               totalHeight={windowHeight}
               opacityFour={photoFourOpacity}

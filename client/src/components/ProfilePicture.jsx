@@ -1,3 +1,6 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-param-reassign */
+/* eslint-disable func-names */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable react/prop-types */
@@ -5,7 +8,7 @@
 /* eslint-disable react/jsx-first-prop-new-line */
 /* eslint-disable react/jsx-max-props-per-line */
 import React from 'react';
-
+import styles from './style/ProfilePicture.css';
 
 class ProfilePicture extends React.Component {
   constructor(props) {
@@ -14,10 +17,11 @@ class ProfilePicture extends React.Component {
     this.state = {
       height: (window.innerHeight / 2),
       width: (window.innerWidth / 2),
-      widthPercent: '50%',
+      widthPercent: (this.props.totalWidth * 0.5),
       hover: false,
     };
 
+    this.progressiveLoading = this.progressiveLoading.bind(this);
     this.updateDimensions = this.updateDimensions.bind(this);
     this.hoverHandler = this.hoverHandler.bind(this);
     this.onClickHandler = this.onClickHandler.bind(this);
@@ -25,6 +29,7 @@ class ProfilePicture extends React.Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.updateDimensions);
+    this.progressiveLoading();
   }
 
   componentWillUnmount() {
@@ -36,26 +41,42 @@ class ProfilePicture extends React.Component {
     clickHandler('profile');
   }
 
+  progressiveLoading() {
+    const imagesToLoad = document.querySelectorAll('img[data-src]');
+    const loadImages = function (image) {
+      image.setAttribute('src', image.getAttribute('data-src'));
+      image.onload = function () {
+        console.log(image.classList);
+        image.removeAttribute('data-src');
+        image.classList.remove(image.classList[1]);
+      };
+    };
+    imagesToLoad.forEach((img) => {
+      loadImages(img);
+    });
+  }
+
   updateDimensions() {
-    const { totalHeight } = this.state;
-    const { threshold, lastThreshold, currWidth } = this.props;
+    const {
+      threshold, lastThreshold, currWidth, totalWidth,
+    } = this.props;
     if (currWidth < lastThreshold) {
       this.setState({
         width: (window.innerWidth / 2),
         height: (window.innerWidth / 2),
-        widthPercent: '100%',
+        widthPercent: totalWidth,
       });
     } else if (currWidth < threshold && currWidth > lastThreshold) {
       this.setState({
         width: (window.innerWidth / 2),
         height: (window.innerWidth / 2),
-        widthPercent: '75%',
+        widthPercent: (totalWidth * 0.75),
       });
     } else {
       this.setState({
         width: (window.innerWidth / 2),
         height: (window.innerWidth / 2),
-        widthPercent: '50%',
+        widthPercent: (totalWidth * 0.5),
       });
     }
   }
@@ -75,14 +96,14 @@ class ProfilePicture extends React.Component {
   render() {
     const { height, width, widthPercent } = this.state;
     const {
-      totalHeight, totalWidth, opacity, photo, currWidth, threshold, lastThreshold, clickHandler,
+      totalHeight, totalWidth, opacity, photo, currWidth, threshold, lastThreshold, clickHandler, tinyPhoto,
     } = this.props;
     return (
-      <div className="profileContainer">
-        <div className="img-hover-zoom">
-          <img src={photo} id="profilePicture" className="picture" alt="http://lorempixel.com/1440/960/city/"
+      <div className={styles.profileContainer}>
+        <div className={styles.imgHoverZoom}>
+          <img src={tinyPhoto} data-src={photo} id="profilePicture" className={[styles.picture, styles.blur].join(' ')} alt=""
             style={{
-              top: 0, minHeight: totalHeight * 0.4, maxHeight: '60%', opacity,
+              top: 0, minHeight: totalHeight * 0.4, maxHeight: '60%', opacity, background: `url(${tinyPhoto})`,
             }}
             height={totalHeight * 0.6} width={widthPercent} onMouseEnter={this.hoverHandler}
             onMouseLeave={this.hoverHandler} onClick={this.onClickHandler}
