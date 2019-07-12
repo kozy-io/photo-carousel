@@ -37,6 +37,7 @@ class App extends React.Component {
     this.updateDimensions = this.updateDimensions.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
     this.exitModal = this.exitModal.bind(this);
+    this.clickExitModal = this.clickExitModal.bind(this);
   }
 
   componentDidMount() {
@@ -169,6 +170,19 @@ class App extends React.Component {
     });
   }
 
+  clickExitModal() {
+    const { modalView } = this.state;
+
+    this.setState({
+      modalView: !modalView,
+      profileOpacity: 0.7,
+      photoTwoOpacity: 0.7,
+      photoThreeOpacity: 0.7,
+      photoFourOpacity: 1,
+      photoFiveOpacity: 0.7,
+    });
+  }
+
   render() {
     const {
       photos, windowHeight, windowWidth, profileOpacity, currWidth, currHeight,
@@ -228,7 +242,7 @@ class App extends React.Component {
         }
         {photos.length > 0 && modalView
           ? (
-            <Slideshow modalFocus={modalFocus} exitModal={this.exitModal} photos={photos} modalView={modalView} />
+            <Slideshow modalFocus={modalFocus} exitModal={this.exitModal} photos={photos} modalView={modalView} clickExitModal={this.clickExitModal}/>
           )
           : undefined
          }

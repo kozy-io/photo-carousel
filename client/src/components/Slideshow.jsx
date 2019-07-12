@@ -169,7 +169,7 @@ class Slideshow extends React.Component {
   }
 
   render() {
-    const { exitModal, modalFocus, photos, modalView } = this.props;
+    const { exitModal, clickExitModal, modalFocus, photos, modalView } = this.props;
     const { currIndex, translationAmount } = this.state;
     return (
       <div className={styles.topmostSlideshow} style={{ visibility: modalView }}>
@@ -182,7 +182,7 @@ class Slideshow extends React.Component {
                     <div>
                       <div>
                         <div className={styles.exitButton}>
-                          <button type="button" className={styles.hiddenButton} aria-busy="false" style={{ padding: 32, margin: -32 }} onClick={exitModal}>
+                          <button type="button" className={styles.hiddenButton} aria-busy="false" style={{ padding: 32, margin: -32 }} onClick={clickExitModal}>
                             <svg
                               viewBox="0 0 24 24"
                               role="img"
