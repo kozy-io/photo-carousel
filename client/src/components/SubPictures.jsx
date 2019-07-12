@@ -12,7 +12,7 @@ class SubPictures extends React.Component {
 
     this.state = {
       height: '50%',
-      width: (window.innerWidth / 4),
+      width: Math.ceil((window.innerWidth / 4)),
       hoverTwo: false,
       hoverThree: false,
       position: '50%',
@@ -58,14 +58,14 @@ class SubPictures extends React.Component {
     const { threshold, totalWidth } = this.props;
     if (window.innerWidth < threshold || totalWidth <= 1128) {
       this.setState({
-        width: (window.innerWidth / 4),
-        height: (window.innerHeight / 4),
+        width: Math.ceil((window.innerWidth / 4)),
+        height: Math.ceil((window.innerHeight / 4)),
         position: '75%',
       });
     } else {
       this.setState({
-        width: (window.innerWidth / 4),
-        height: (window.innerHeight / 4),
+        width: Math.ceil((window.innerWidth / 4)),
+        height: Math.ceil((window.innerHeight / 4)),
         position: '50%',
       });
     }
@@ -111,9 +111,9 @@ class SubPictures extends React.Component {
               className={[styles.subPicture, styles.blur].join(' ')}
               alt=""
               style={{
-                top: 0, minHeight: (totalHeight * 0.3), opacity: opacityTwo, background: `url(${tinyPhotos[0]})`,
+                top: 0, minHeight: Math.ceil((totalHeight * 0.3)), opacity: opacityTwo, background: `url(${tinyPhotos[0]})`,
               }}
-              height={totalHeight * 0.6 * 0.5}
+              height={Math.ceil(totalHeight * 0.6 * 0.5)}
               width={width}
               name="two"
               onMouseEnter={this.hoverHandler}
@@ -131,9 +131,9 @@ class SubPictures extends React.Component {
               className={[styles.subPicture, styles.blur].join(' ')}
               alt=""
               style={{
-                top: 0, minHeight: (totalHeight * 0.3), opacity: opacityThree, background: `url(${tinyPhotos[1]})`,
+                top: 0, minHeight: Math.ceil((totalHeight * 0.3)), opacity: opacityThree, background: `url(${tinyPhotos[1]})`,
               }}
-              height={totalHeight * 0.6 * 0.5}
+              height={Math.ceil(totalHeight * 0.6 * 0.5)}
               width={width}
               name="three"
               onMouseEnter={this.hoverHandler}

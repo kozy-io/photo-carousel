@@ -15,9 +15,9 @@ class ProfilePicture extends React.Component {
     super(props);
 
     this.state = {
-      height: (window.innerHeight / 2),
-      width: (window.innerWidth / 2),
-      widthPercent: (this.props.totalWidth * 0.5),
+      height: Math.ceil((window.innerHeight / 2)),
+      width: Math.ceil((window.innerWidth / 2)),
+      widthPercent: Math.ceil((this.props.totalWidth * 0.5)),
       hover: false,
     };
 
@@ -63,20 +63,20 @@ class ProfilePicture extends React.Component {
     } = this.props;
     if (currWidth < lastThreshold || totalWidth <= 744) {
       this.setState({
-        width: (window.innerWidth / 2),
-        height: (window.innerWidth / 2),
+        width: Math.ceil((window.innerWidth / 2)),
+        height: Math.ceil((window.innerWidth / 2)),
         widthPercent: '100%',
       });
     } else if ((currWidth < threshold && currWidth > lastThreshold) || totalWidth <= 1128) {
       this.setState({
-        width: (window.innerWidth / 2),
-        height: (window.innerWidth / 2),
+        width: Math.ceil((window.innerWidth / 2)),
+        height: Math.ceil((window.innerWidth / 2)),
         widthPercent: '75%',
       });
     } else {
       this.setState({
-        width: (window.innerWidth / 2),
-        height: (window.innerWidth / 2),
+        width: Math.ceil((window.innerWidth / 2)),
+        height: Math.ceil((window.innerWidth / 2)),
         widthPercent: '50%',
       });
     }
@@ -104,9 +104,9 @@ class ProfilePicture extends React.Component {
         <div className={styles.imgHoverZoom}>
           <img src={tinyPhoto} data-src={photo} id="profilePicture" className={[styles.picture, styles.blur].join(' ')} alt=""
             style={{
-              top: 0, minHeight: totalHeight * 0.4, maxHeight: '60%', opacity, background: `url(${tinyPhoto})`,
+              top: 0, minHeight: Math.ceil((totalHeight * 0.4)), maxHeight: '60%', opacity, background: `url(${tinyPhoto})`,
             }}
-            height={totalHeight * 0.6} width={widthPercent} onMouseEnter={this.hoverHandler}
+            height={Math.ceil((totalHeight * 0.6))} width={widthPercent} onMouseEnter={this.hoverHandler}
             onMouseLeave={this.hoverHandler} onClick={this.onClickHandler}
           />
         </div>

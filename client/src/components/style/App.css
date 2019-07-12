@@ -8,3 +8,330 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.topButtonsContainer {
+    position: absolute !important;
+    top: 24px !important;
+    right: 24px !important;
+    z-index: 1 !important;
+}
+
+.topButtonsInner {
+    white-space: nowrap !important;
+    line-height: 0 !important;
+}
+
+.buttonOneContainer {
+    display: inline-block !important;
+}
+
+.buttonOneInner {
+    display: inline-block !important;
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.14) !important;
+    border-radius: 4px !important;
+}
+
+.buttonOne {
+    border-radius: var(--border-button-small-border-radius, 4px) !important;
+    font-size: var(--font-button-small-font-size, 14px) !important;
+    line-height: var(--font-button-small-line-height, 22px) !important;
+    letter-spacing: var(--font-button-small-letter-spacing, normal) !important;
+    font-family: var(--font-button-small-font-family, Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif) !important;
+    text-transform: var(--font-button-small-text-transform, undefined) !important;
+    padding-top: var(--spacing-button-small-vertical, 6px) !important;
+    padding-bottom: var(--spacing-button-small-vertical, 6px) !important;
+    font-weight: var(--font-book-font-weight, 600) !important;
+    border-width: var(--border-button-small-border-width, 1px) !important;
+    padding-left: var(--spacing-button-small-horizontal, 15px) !important;
+    padding-right: var(--spacing-button-small-horizontal, 15px) !important;
+    box-shadow: var(--shadow-button-level0-box-shadow, none) !important;
+    background: var(--color-buttons-inverse-color, #ffffff) !important;
+    border-color: var(--color-buttons-inverse-border, transparent) !important;
+    color: var(--color-buttons-inverse-text, #484848) !important;
+}
+
+.buttonOne {
+    display: inline-block !important;
+    margin: 0px !important;
+    position: relative !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    -webkit-transition-property: background, border-color, color !important;
+    -moz-transition-property: background, border-color, color !important;
+    transition-property: background, border-color, color !important;
+    -webkit-transition-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
+    -webkit-transition-timing-function: ease-out !important;
+    transition-timing-function: ease-out !important;
+    width: auto !important;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    line-height: 22px !important;
+    letter-spacing: normal !important;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    text-transform: undefined !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    font-weight: 600 !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    min-width: 48.54101966249685px !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    border-color: transparent !important;
+    color: #484848 !important;
+}
+
+.buttonOneSpan {
+    font-size: var(--font-button-small-font-size, 14px) !important;
+    line-height: var(--font-button-small-line-height, 22px) !important;
+    letter-spacing: var(--font-button-small-letter-spacing, normal) !important;
+    font-family: var(--font-button-small-font-family, Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif) !important;
+    text-transform: var(--font-button-small-text-transform, undefined) !important;
+    padding-top: var(--font-button-small-padding-top, undefined) !important;
+    padding-bottom: var(--font-button-small-padding-bottom, undefined) !important;
+    font-size: 14px !important;
+    line-height: 22px !important;
+    letter-spacing: normal !important;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    text-transform: undefined !important;
+    color: inherit !important;
+    padding-top: undefined !important;
+    padding-bottom: undefined !important;
+}
+
+.buttonOneText {
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: -ms-flexbox !important;
+    display: -webkit-flex !important;
+    display: flex !important;
+}
+
+.buttonOneIcon {
+    -ms-flex-item-align: center !important;
+    display: -webkit-inline-box !important;
+    display: -moz-inline-box !important;
+    display: -ms-inline-flexbox !important;
+    display: -webkit-inline-flex !important;
+    display: inline-flex !important;
+    -webkit-align-self: center !important;
+    align-self: center !important;
+}
+
+.buttonOneShare {
+    -ms-flex-item-align: center !important;
+    display: -webkit-inline-box !important;
+    display: -moz-inline-box !important;
+    display: -ms-inline-flexbox !important;
+    display: -webkit-inline-flex !important;
+    display: inline-flex !important;
+    -webkit-align-self: center !important;
+    align-self: center !important;
+}
+
+.buttonTwoContainer {
+    display: inline-block !important;
+}
+
+.buttonTwoInner {
+    display: inline-block !important;
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.14) !important;
+    border-radius: 4px !important;
+}
+
+.buttonTwoAccessSpan {
+    border: 0px !important;
+    clip: rect(0 0 0 0) !important;
+    -webkit-clip-path: inset(100%) !important;
+    clip-path: inset(100%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    padding: 0px !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
+}
+
+.buttonTwo {
+    border-radius: var(--border-button-small-border-radius, 4px) !important;
+    font-size: var(--font-button-small-font-size, 14px) !important;
+    line-height: var(--font-button-small-line-height, 22px) !important;
+    letter-spacing: var(--font-button-small-letter-spacing, normal) !important;
+    font-family: var(--font-button-small-font-family, Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif) !important;
+    text-transform: var(--font-button-small-text-transform, undefined) !important;
+    padding-top: var(--spacing-button-small-vertical, 6px) !important;
+    padding-bottom: var(--spacing-button-small-vertical, 6px) !important;
+    font-weight: var(--font-book-font-weight, 600) !important;
+    border-width: var(--border-button-small-border-width, 1px) !important;
+    padding-left: var(--spacing-button-small-horizontal, 15px) !important;
+    padding-right: var(--spacing-button-small-horizontal, 15px) !important;
+    box-shadow: var(--shadow-button-level0-box-shadow, none) !important;
+    background: var(--color-buttons-inverse-color, #ffffff) !important;
+    border-color: var(--color-buttons-inverse-border, transparent) !important;
+    color: var(--color-buttons-inverse-text, #484848) !important;
+    display: inline-block !important;
+    margin: 0px !important;
+    position: relative !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    -webkit-transition-property: background, border-color, color !important;
+    -moz-transition-property: background, border-color, color !important;
+    transition-property: background, border-color, color !important;
+    -webkit-transition-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
+    -webkit-transition-timing-function: ease-out !important;
+    transition-timing-function: ease-out !important;
+    width: auto !important;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    line-height: 22px !important;
+    letter-spacing: normal !important;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    text-transform: undefined !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    font-weight: 600 !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    min-width: 48.54101966249685px !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    border-color: transparent !important;
+    color: #484848 !important;
+}
+
+.buttonTwoSpan {
+    font-size: var(--font-button-small-font-size, 14px) !important;
+    line-height: var(--font-button-small-line-height, 22px) !important;
+    letter-spacing: var(--font-button-small-letter-spacing, normal) !important;
+    font-family: var(--font-button-small-font-family, Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif) !important;
+    text-transform: var(--font-button-small-text-transform, undefined) !important;
+    padding-top: var(--font-button-small-padding-top, undefined) !important;
+    padding-bottom: var(--font-button-small-padding-bottom, undefined) !important;
+    font-size: 14px !important;
+    line-height: 22px !important;
+    letter-spacing: normal !important;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    text-transform: undefined !important;
+    color: inherit !important;
+    padding-top: undefined !important;
+    padding-bottom: undefined !important;
+}
+
+.buttonTwoText {
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: -ms-flexbox !important;
+    display: -webkit-flex !important;
+    display: flex !important;
+}
+
+.buttonTwoIcon {
+    -ms-flex-item-align: center !important;
+    display: -webkit-inline-box !important;
+    display: -moz-inline-box !important;
+    display: -ms-inline-flexbox !important;
+    display: -webkit-inline-flex !important;
+    display: inline-flex !important;
+    -webkit-align-self: center !important;
+    align-self: center !important;
+}
+
+.buttonTwoSave {
+    -ms-flex-item-align: center !important;
+    display: -webkit-inline-box !important;
+    display: -moz-inline-box !important;
+    display: -ms-inline-flexbox !important;
+    display: -webkit-inline-flex !important;
+    display: inline-flex !important;
+    -webkit-align-self: center !important;
+    align-self: center !important;
+}
+
+.buttonThreeContainer {
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.14) !important;
+    position: absolute !important;
+    left: auto !important;
+    right: 24px !important;
+    top: 400px !important;
+    -webkit-transform: translateY(0) !important;
+    -ms-transform: translateY(0) !important;
+    transform: translateY(0) !important;
+    z-index: 1 !important;
+}
+
+.buttonThree {
+    border-radius: var(--border-button-small-border-radius, 4px) !important;
+    font-size: var(--font-button-small-font-size, 14px) !important;
+    line-height: var(--font-button-small-line-height, 22px) !important;
+    letter-spacing: var(--font-button-small-letter-spacing, normal) !important;
+    font-family: var(--font-button-small-font-family, Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif) !important;
+    text-transform: var(--font-button-small-text-transform, undefined) !important;
+    padding-top: var(--spacing-button-small-vertical, 6px) !important;
+    padding-bottom: var(--spacing-button-small-vertical, 6px) !important;
+    font-weight: var(--font-book-font-weight, 600) !important;
+    border-width: var(--border-button-small-border-width, 1px) !important;
+    padding-left: var(--spacing-button-small-horizontal, 15px) !important;
+    padding-right: var(--spacing-button-small-horizontal, 15px) !important;
+    box-shadow: var(--shadow-button-level0-box-shadow, none) !important;
+    background: var(--color-buttons-inverse-color, #ffffff) !important;
+    border-color: var(--color-buttons-inverse-border, transparent) !important;
+    color: var(--color-buttons-inverse-text, #484848) !important;
+    display: inline-block !important;
+    margin: 0px !important;
+    position: relative !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    -webkit-transition-property: background, border-color, color !important;
+    -moz-transition-property: background, border-color, color !important;
+    transition-property: background, border-color, color !important;
+    -webkit-transition-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
+    -webkit-transition-timing-function: ease-out !important;
+    transition-timing-function: ease-out !important;
+    width: auto !important;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    line-height: 22px !important;
+    letter-spacing: normal !important;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    text-transform: undefined !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    font-weight: 600 !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    min-width: 48.54101966249685px !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    border-color: transparent !important;
+    color: #484848 !important;
+}
+
+.buttonThreeSpan {
+    font-size: var(--font-button-small-font-size, 14px) !important;
+    line-height: var(--font-button-small-line-height, 22px) !important;
+    letter-spacing: var(--font-button-small-letter-spacing, normal) !important;
+    font-family: var(--font-button-small-font-family, Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif) !important;
+    text-transform: var(--font-button-small-text-transform, undefined) !important;
+    padding-top: var(--font-button-small-padding-top, undefined) !important;
+    padding-bottom: var(--font-button-small-padding-bottom, undefined) !important;
+    font-size: 14px !important;
+    line-height: 22px !important;
+    letter-spacing: normal !important;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    text-transform: undefined !important;
+    color: inherit !important;
+    padding-top: undefined !important;
+    padding-bottom: undefined !important;
+}

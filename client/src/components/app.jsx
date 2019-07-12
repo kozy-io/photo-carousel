@@ -71,9 +71,7 @@ class App extends React.Component {
   }
 
   clickHandler(focus) {
-    const { modalView, photos } = this.state;
-    let tmp;
-    let view;
+    let tmp = 0;
     switch (focus) {
       case 'profile':
         tmp = 0;
@@ -159,7 +157,7 @@ class App extends React.Component {
   }
 
   exitModal() {
-    const {modalView} = this.state;
+    const { modalView } = this.state;
 
     this.setState({
       modalView: !modalView,
@@ -173,7 +171,7 @@ class App extends React.Component {
       threshold, lastThreshold, modalView, modalFocus, exitModal,
     } = this.state;
     return (
-      <div className="photoCarousel">
+      <div className={styles.photoCarousel}>
         {photos.length > 0
           ? (
             <ProfilePicture
@@ -229,6 +227,90 @@ class App extends React.Component {
           )
           : undefined
          }
+        <div className={styles.buttonThreeContainer}>
+          <button type="button" className={styles.buttonThree} aria-busy="false" data-veloute="hero-view-photos-button" onClick={this.clickHandler}>
+            <span className={styles.buttonThreeSpan}>View Photos</span>
+          </button>
+        </div>
+        <div className={styles.topButtonsContainer}>
+          <div className={styles.topButtonsInner}>
+            <div className={styles.buttonOneContainer}>
+              <div className={styles.buttonOneInner}>
+                <button type="button" className={styles.buttonOne} aria-busy="false">
+                  <span className={styles.buttonOneSpan}>
+                    <div className={styles.buttonOneText} style={{ justifyContent: 'center' }}>
+                      <div className={styles.buttonOneIcon}>
+                        <div style={{ marginRight: '12px' }}>
+                          <svg
+                            style={{
+                              height: '15px', width: '15px', display: 'block', overflow: 'visible',
+                            }}
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            fillOpacity="0"
+                            stroke="currentColor"
+                            strokeWidth="2.25"
+                            focusable="false"
+                            ariaHidden="true"
+                            role="presentation"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <g fillRule="evenodd">
+                              <path d="m11.5 16v-15" />
+                              <path d="m7.5 4 4-3 4 3" />
+                              <path d="m5.4 9.5h-3.9v14h20v-14h-3.1" />
+                            </g>
+                          </svg>
+                        </div>
+                      </div>
+                      <div className={styles.buttonOneShare}>
+                        <div>Share</div>
+                      </div>
+                    </div>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div className={styles.buttonTwoContainer} style={{ marginLeft: '18px' }}>
+              <span>
+                <div className={styles.buttonTwoInner}>
+                  <span id="save-button-accessible-text" aria-hidden="true" className={styles.buttonTwoAccessSpan}>Save this listing.</span>
+                  <button type="button" className={styles.buttonTwo} aria-describedby="save-button-accessible-text" aria-busy="false">
+                    <span className={styles.buttonTwoSpan}>
+                      <div className={styles.buttonTwoText} style={{ justifyContent: 'center' }}>
+                        <div className={styles.buttonTwoIcon}>
+                          <div style={{ marginRight: '12px' }}>
+                            <svg
+                              style={{
+                                height: '15px', width: '15px', display: 'block', overflow: 'visible',
+                              }}
+                              viewBox="0 0 24 24"
+                              fill="currentColor"
+                              fillOpacity="0"
+                              stroke="#484848"
+                              strokeWidth="2.25"
+                              focusable="false"
+                              aria-label="Save this listing."
+                              role="img"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <path d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6" strokeLinejoin="round" />
+                            </svg>
+                          </div>
+                        </div>
+                        <div className={styles.buttonTwoSave}>
+                          <div>Save</div>
+                        </div>
+                      </div>
+                    </span>
+                  </button>
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
