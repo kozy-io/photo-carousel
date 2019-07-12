@@ -94,7 +94,7 @@ class App extends React.Component {
     }
 
     this.setState({
-      modalView: 'true',
+      modalView: true,
       modalFocus: tmp,
     });
   }
@@ -102,6 +102,7 @@ class App extends React.Component {
   hoverHandler(focus) {
     if (focus === 'profile') {
       this.setState({
+        profileOpacity: 1,
         photoTwoOpacity: 0.7,
         photoThreeOpacity: 0.7,
         photoFourOpacity: 0.7,
@@ -112,6 +113,7 @@ class App extends React.Component {
     if (focus === 'two') {
       this.setState({
         profileOpacity: 0.7,
+        photoTwoOpacity: 1,
         photoThreeOpacity: 0.7,
         photoFourOpacity: 0.7,
         photoFiveOpacity: 0.7,
@@ -122,6 +124,7 @@ class App extends React.Component {
       this.setState({
         profileOpacity: 0.7,
         photoTwoOpacity: 0.7,
+        photoThreeOpacity: 1,
         photoFourOpacity: 0.7,
         photoFiveOpacity: 0.7,
       });
@@ -132,6 +135,7 @@ class App extends React.Component {
         profileOpacity: 0.7,
         photoTwoOpacity: 0.7,
         photoThreeOpacity: 0.7,
+        photoFourOpacity: 1,
         photoFiveOpacity: 0.7,
       });
     }
@@ -142,6 +146,7 @@ class App extends React.Component {
         photoTwoOpacity: 0.7,
         photoThreeOpacity: 0.7,
         photoFourOpacity: 0.7,
+        photoFiveOpacity: 1,
       });
     }
 
@@ -251,7 +256,7 @@ class App extends React.Component {
                             stroke="currentColor"
                             strokeWidth="2.25"
                             focusable="false"
-                            ariaHidden="true"
+                            aria-hidden="true"
                             role="presentation"
                             strokeLinecap="round"
                             strokeLinejoin="round"

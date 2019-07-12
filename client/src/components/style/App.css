@@ -7,6 +7,7 @@
     margin-top: -10;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position:relative;
 }
 
 .topButtonsContainer {
@@ -260,7 +261,7 @@
     position: absolute !important;
     left: auto !important;
     right: 24px !important;
-    top: 400px !important;
+    bottom: 24px !important;
     -webkit-transform: translateY(0) !important;
     -ms-transform: translateY(0) !important;
     transform: translateY(0) !important;

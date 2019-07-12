@@ -118,6 +118,7 @@ class SubPictures extends React.Component {
               name="two"
               onMouseEnter={this.hoverHandler}
               onMouseLeave={this.hoverHandler}
+              onMouseDown={this.hoverHandler}
               onClick={this.onClickHandler}
             />
           </div>
@@ -138,6 +139,7 @@ class SubPictures extends React.Component {
               name="three"
               onMouseEnter={this.hoverHandler}
               onMouseLeave={this.hoverHandler}
+              onMouseDown={this.hoverHandler}
               onClick={this.onClickHandler}
             />
           </div>

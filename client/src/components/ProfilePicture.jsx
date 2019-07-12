@@ -107,7 +107,7 @@ class ProfilePicture extends React.Component {
               top: 0, minHeight: Math.ceil((totalHeight * 0.4)), maxHeight: '60%', opacity, background: `url(${tinyPhoto})`,
             }}
             height={Math.ceil((totalHeight * 0.6))} width={widthPercent} onMouseEnter={this.hoverHandler}
-            onMouseLeave={this.hoverHandler} onClick={this.onClickHandler}
+            onMouseLeave={this.hoverHandler} onClick={this.onClickHandler} onMouseDown={this.hoverHandler}
           />
         </div>
       </div>
