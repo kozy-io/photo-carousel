@@ -27,6 +27,7 @@ class SubPictures extends React.Component {
   componentDidMount() {
     window.addEventListener('resize', this.updateDimensions);
     this.progressiveLoading();
+    this.updateDimensions();
   }
 
   componentWillUnmount() {
@@ -54,8 +55,8 @@ class SubPictures extends React.Component {
   }
 
   updateDimensions() {
-    const { threshold } = this.props;
-    if (window.innerWidth < threshold) {
+    const { threshold, totalWidth } = this.props;
+    if (window.innerWidth < threshold || totalWidth <= 1128) {
       this.setState({
         width: (window.innerWidth / 4),
         height: (window.innerHeight / 4),

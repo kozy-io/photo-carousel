@@ -30,6 +30,7 @@ class ProfilePicture extends React.Component {
   componentDidMount() {
     window.addEventListener('resize', this.updateDimensions);
     this.progressiveLoading();
+    this.updateDimensions();
   }
 
   componentWillUnmount() {
@@ -60,23 +61,23 @@ class ProfilePicture extends React.Component {
     const {
       threshold, lastThreshold, currWidth, totalWidth,
     } = this.props;
-    if (currWidth < lastThreshold) {
+    if (currWidth < lastThreshold || totalWidth <= 744) {
       this.setState({
         width: (window.innerWidth / 2),
         height: (window.innerWidth / 2),
-        widthPercent: totalWidth,
+        widthPercent: '100%',
       });
-    } else if (currWidth < threshold && currWidth > lastThreshold) {
+    } else if ((currWidth < threshold && currWidth > lastThreshold) || totalWidth <= 1128) {
       this.setState({
         width: (window.innerWidth / 2),
         height: (window.innerWidth / 2),
-        widthPercent: (totalWidth * 0.75),
+        widthPercent: '75%',
       });
     } else {
       this.setState({
         width: (window.innerWidth / 2),
         height: (window.innerWidth / 2),
-        widthPercent: (totalWidth * 0.5),
+        widthPercent: '50%',
       });
     }
   }

@@ -46,6 +46,7 @@ class Slideshow extends React.Component {
 
     if (tmp !== translationAmount) {
       this.setState({
+        
         translationAmount: tmp,
       });
     }

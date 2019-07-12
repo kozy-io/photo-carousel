@@ -88,7 +88,7 @@ class ExtraPictures extends React.Component {
     const { height, width } = this.state;
     const { photos, totalHeight, totalWidth, opacityFour, opacityFive, currWidth, tinyPhotos } = this.props;
     return (
-      <div className={styles.subPictureColumn} style={{ left: '50%', height: totalHeight * 0.6, minHeight: '60%' }}>
+      <div className={styles.subPictureColumn} style={{ left: '50%', height: totalHeight * 0.6, minHeight: totalHeight * 0.6 }}>
         <div className={styles.imgHoverZoom}>
           <div className={styles.entryOne}>
             <img
@@ -101,7 +101,7 @@ class ExtraPictures extends React.Component {
                 top: 0, minHeight: (totalHeight * 0.3), opacity: opacityFour, background: `url(${tinyPhotos[0]})`,
               }}
               height={totalHeight * 0.6 * 0.5}
-              width={width}
+              width={width - 4}
               name="four"
               onMouseEnter={this.hoverHandler}
               onMouseLeave={this.hoverHandler}
@@ -121,7 +121,7 @@ class ExtraPictures extends React.Component {
                 top: 0, minHeight: (totalHeight * 0.3), opacity: opacityFive, background: `url(${tinyPhotos[0]})`,
               }}
               height={totalHeight * 0.6 * 0.5}
-              width={width}
+              width={width - 4}
               name="five"
               onMouseEnter={this.hoverHandler}
               onMouseLeave={this.hoverHandler}
