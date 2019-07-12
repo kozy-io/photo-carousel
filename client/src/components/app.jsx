@@ -20,9 +20,9 @@ class App extends React.Component {
       windowWidth: window.innerWidth,
       currHeight: window.innerHeight,
       currWidth: window.innerWidth,
-      threshold: (window.innerWidth * 0.7),
-      lastThreshold: (window.innerWidth * 0.5),
-      modalView: 'hidden',
+      threshold: 1128,
+      lastThreshold: 744,
+      modalView: false,
       modalFocus: '',
       profileOpacity: 1,
       photoTwoOpacity: 1,
@@ -95,14 +95,8 @@ class App extends React.Component {
         break;
     }
 
-    if (modalView === 'hidden') {
-      view = 'visible';
-    } else {
-      view = 'hidden';
-    }
-
     this.setState({
-      modalView: view,
+      modalView: 'true',
       modalFocus: tmp,
     });
   }
@@ -165,8 +159,10 @@ class App extends React.Component {
   }
 
   exitModal() {
+    const {modalView} = this.state;
+
     this.setState({
-      modalView: 'hidden',
+      modalView: !modalView,
     });
   }
 
@@ -227,7 +223,7 @@ class App extends React.Component {
           )
           : undefined
         }
-        {photos.length > 0 && typeof modalFocus === 'number'
+        {photos.length > 0 && modalView
           ? (
             <Slideshow modalFocus={modalFocus} exitModal={this.exitModal} photos={photos} modalView={modalView} />
           )

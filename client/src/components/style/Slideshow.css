@@ -237,10 +237,10 @@ svg:not(:root) {
 
 .rightEdge {
     position: absolute !important;
-    right: -20px;
+    right: 0px;
     height: 80px !important;
     z-index: 1 !important;
-    width: 50px !important;
+    width: 30px !important;
     background: linear-gradient(270deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 90.82%) !important;
 }
 
@@ -256,10 +256,10 @@ svg:not(:root) {
     height: 80px !important;
     transform: rotate(180deg) !important;
     z-index: 1 !important;
-    width: 50px !important;
-    left:30px;
+    width: 30px !important;
+    left:0px;
     background: linear-gradient(270deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 90.82%) !important;
-    top: 80px;
+    top: 0px;
 }
 
 @media (min-width: 1440px) {

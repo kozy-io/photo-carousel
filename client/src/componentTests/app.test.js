@@ -13,7 +13,6 @@ describe('App', () => {
     expect(component.exists()).toBe(true);
   });
 
-
   it('should render correctly', async () => {
     const component = shallow(<App />);
 
@@ -152,12 +151,12 @@ describe('App', () => {
     const component = shallow(<App />);
     component.setState({
       modalFocus: 3,
-      modalView: 'hidden',
+      modalView: false,
     });
     component.instance().clickHandler('profile');
 
     expect(component.state().modalFocus).toEqual(0);
-    expect(component.state().modalView).toEqual('visible');
+    expect(component.state().modalView).toEqual(true);
   });
 
   it('renders all children components except modalView when there are atleast than 5 pictures', () => {
