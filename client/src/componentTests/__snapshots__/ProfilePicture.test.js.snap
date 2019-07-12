@@ -5,25 +5,26 @@ exports[`ProfilePicture should render correctly 1`] = `
   className="profileContainer"
 >
   <div
-    className="img-hover-zoom"
+    className="imgHoverZoom"
   >
     <img
-      alt="http://lorempixel.com/1440/960/city/"
-      className="picture"
-      height="60%"
+      alt=""
+      className="picture blur"
+      height={NaN}
       id="profilePicture"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       style={
         Object {
+          "background": "url(undefined)",
           "maxHeight": "60%",
-          "minHeight": "60%",
+          "minHeight": NaN,
           "opacity": undefined,
           "top": 0,
         }
       }
-      width="50%"
+      width={NaN}
     />
   </div>
 </div>

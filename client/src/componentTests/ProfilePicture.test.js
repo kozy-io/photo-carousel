@@ -14,6 +14,17 @@ describe('ProfilePicture', () => {
     expect(component).toMatchSnapshot();
   });
 
+  it('should call load profile picture progressively on mount', () => {
+    const spy = jest.spyOn(ProfilePicture.prototype, 'progressiveLoading');
+    const component = shallow(<ProfilePicture />);
+    component.setState({
+      currWidth: 1440, lastThreshold: 720, opacity: 1, threshold: 1008, totalHeight: 766, totalWidth: 1440, photo: 'http://lorempixel.com/1440/960/city',
+    });
+
+    component.instance().progressiveLoading();
+    expect(spy).toHaveBeenCalled();
+  });
+
   it('should handle hover correctly', () => {
     const mockCallBack = jest.fn();
     const component = shallow(<ProfilePicture hoverHandler={mockCallBack} />);

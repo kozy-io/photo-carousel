@@ -1,7 +1,11 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable func-names */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-
+import styles from './style/ExtraPictures.css';
 
 class ExtraPictures extends React.Component {
   constructor(props) {
@@ -17,10 +21,12 @@ class ExtraPictures extends React.Component {
     this.updateDimensions = this.updateDimensions.bind(this);
     this.hoverHandler = this.hoverHandler.bind(this);
     this.onClickHandler = this.onClickHandler.bind(this);
+    this.progressiveLoading = this.progressiveLoading.bind(this);
   }
 
   componentDidMount() {
     window.addEventListener('resize', this.updateDimensions);
+    this.progressiveLoading();
   }
 
   componentWillUnmount() {
@@ -31,6 +37,20 @@ class ExtraPictures extends React.Component {
     const { name } = target;
     const { clickHandler } = this.props;
     clickHandler(name);
+  }
+
+  progressiveLoading() {
+    const imagesToLoad = document.querySelectorAll('img[data-src]');
+    const loadImages = function (image) {
+      image.setAttribute('src', image.getAttribute('data-src'));
+      image.onload = function () {
+        image.removeAttribute('data-src');
+        image.classList.remove('blur');
+      };
+    };
+    imagesToLoad.forEach((img) => {
+      loadImages(img);
+    });
   }
 
   updateDimensions() {
@@ -66,20 +86,21 @@ class ExtraPictures extends React.Component {
 
   render() {
     const { height, width } = this.state;
-    const { photos, totalHeight, totalWidth, opacityFour, opacityFive, currWidth } = this.props;
+    const { photos, totalHeight, totalWidth, opacityFour, opacityFive, currWidth, tinyPhotos } = this.props;
     return (
-      <div className="subPictureColumn" style={{ left: '50%', height: totalHeight * 0.6, minHeight: '60%' }}>
-        <div className="img-hover-zoom">
-          <div className="entryOne">
+      <div className={styles.subPictureColumn} style={{ left: '50%', height: totalHeight * 0.6, minHeight: '60%' }}>
+        <div className={styles.imgHoverZoom}>
+          <div className={styles.entryOne}>
             <img
-              src={photos[0]}
+              src={tinyPhotos[0]}
+              data-src={photos[0]}
               id="subPictures"
-              className="subPicture"
-              alt="http://lorempixel.com/1440/960/city/"
+              className={[styles.subPicture, styles.blur].join(' ')}
+              alt=""
               style={{
-                top: 0, minHeight: (totalHeight * 0.3), opacity: opacityFour,
+                top: 0, minHeight: (totalHeight * 0.3), opacity: opacityFour, background: `url(${tinyPhotos[0]})`,
               }}
-              height={height}
+              height={totalHeight * 0.6 * 0.5}
               width={width}
               name="four"
               onMouseEnter={this.hoverHandler}
@@ -88,17 +109,18 @@ class ExtraPictures extends React.Component {
             />
           </div>
         </div>
-        <div className="img-hover-zoom">
-          <div className="entryTwo">
+        <div className={styles.imgHoverZoom}>
+          <div className={styles.entryTwo}>
             <img
-              src={photos[1]}
+              src={tinyPhotos[1]}
+              data-src={photos[1]}
               id="subPictures"
-              className="subPicture"
-              alt="http://lorempixel.com/1440/960/city/"
+              className={[styles.subPicture, styles.blur].join(' ')}
+              alt=""
               style={{
-                top: 0, minHeight: (totalHeight * 0.3), opacity: opacityFive,
+                top: 0, minHeight: (totalHeight * 0.3), opacity: opacityFive, background: `url(${tinyPhotos[0]})`,
               }}
-              height={height}
+              height={totalHeight * 0.6 * 0.5}
               width={width}
               name="five"
               onMouseEnter={this.hoverHandler}

@@ -1,7 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Slideshow should render correctly 1`] = `
-<div>
+<div
+  className="topmostSlideshow"
+  style={
+    Object {
+      "visibility": undefined,
+    }
+  }
+>
   <div>
     <div
       dir="ltr"
@@ -188,10 +195,10 @@ exports[`Slideshow should render correctly 1`] = `
                             className="imageCenterer"
                           >
                             <div
-                              className="_zf7q4"
+                              className="miniContainer"
                             >
                               <ul
-                                className="_conlnu"
+                                className="translator"
                                 style={
                                   Object {
                                     "transform": "translateX(8px)",
@@ -199,35 +206,35 @@ exports[`Slideshow should render correctly 1`] = `
                                 }
                               >
                                 <li
-                                  className="_12n0r6ug"
+                                  className="miniEntry"
                                   key="0"
                                   onClick={[Function]}
                                 >
                                   <button
                                     aria-label="0/2: Et esse laudantium sunt et."
-                                    className="_hwcst"
+                                    className="miniEntryButton"
                                     index={0}
                                   >
                                     <img
                                       alt=""
-                                      className="_u6tx3c"
+                                      className="miniImage"
                                       index={0}
                                       src="http://lorempixel.com/1440/960/city"
                                     />
                                   </button>
                                 </li>
                                 <li
-                                  className="_1y6wdia"
+                                  className="miniFocus"
                                   key="1"
                                 >
                                   <button
                                     aria-label="1/2: Et esse laudantium sunt et."
-                                    className="_1umg7png"
+                                    className="miniFocusButton"
                                     index="0"
                                   >
                                     <img
                                       alt=""
-                                      className="_u6tx3c"
+                                      className="miniImage"
                                       src="http://lorempixel.com/1440/960/city"
                                     />
                                   </button>
@@ -240,7 +247,7 @@ exports[`Slideshow should render correctly 1`] = `
                     </div>
                   </div>
                   <div
-                    className="_yoviva"
+                    className="descriptionContainer"
                   >
                     <div
                       style={
@@ -250,7 +257,7 @@ exports[`Slideshow should render correctly 1`] = `
                       }
                     >
                       <div
-                        className="_1p3joamp"
+                        className="indexCounter"
                       >
                         2
                         /
@@ -258,10 +265,10 @@ exports[`Slideshow should render correctly 1`] = `
                       </div>
                     </div>
                     <div
-                      className="_1dcp06s"
+                      className="captionContainer"
                     >
                       <div
-                        className="_czm8crp"
+                        className="caption"
                       >
                         Et esse laudantium sunt et.
                       </div>
