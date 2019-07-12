@@ -46,7 +46,6 @@ class Slideshow extends React.Component {
 
     if (tmp !== translationAmount) {
       this.setState({
-        
         translationAmount: tmp,
       });
     }
@@ -57,10 +56,13 @@ class Slideshow extends React.Component {
   }
 
   logKey({ code }) {
+    const { exitModal } = this.props;
     if (code === 'ArrowRight') {
       this.nextPictureHandler();
-    } else if (code === 'ArrowLeft') {
+    } if (code === 'ArrowLeft') {
       this.prevPictureHandler();
+    } else if (code === 'Escape') {
+      exitModal();
     }
   }
 
