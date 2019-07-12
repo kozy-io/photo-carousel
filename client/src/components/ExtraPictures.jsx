@@ -105,6 +105,7 @@ class ExtraPictures extends React.Component {
               name="four"
               onMouseEnter={this.hoverHandler}
               onMouseLeave={this.hoverHandler}
+              onMouseDown={this.hoverHandler}
               onClick={this.onClickHandler}
             />
           </div>
@@ -125,6 +126,7 @@ class ExtraPictures extends React.Component {
               name="five"
               onMouseEnter={this.hoverHandler}
               onMouseLeave={this.hoverHandler}
+              onMouseDown={this.hoverHandler}
               onClick={this.onClickHandler}
             />
           </div>

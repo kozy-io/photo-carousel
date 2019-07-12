@@ -243,8 +243,8 @@ describe('App', () => {
         '2019-07-10T01:42:08.000Z',
       },
       ],
+      currWidth: 10000,
     });
-
     expect(component.find('ProfilePicture').length).toEqual(1);
     expect(component.find('SubPictures').length).toEqual(1);
     expect(component.find('ExtraPictures').length).toEqual(1);

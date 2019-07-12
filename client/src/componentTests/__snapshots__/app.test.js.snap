@@ -3,5 +3,197 @@
 exports[`App should render correctly 1`] = `
 <div
   className="photoCarousel"
-/>
+>
+  <div
+    className="buttonThreeContainer"
+  >
+    <button
+      aria-busy="false"
+      className="buttonThree"
+      data-veloute="hero-view-photos-button"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="buttonThreeSpan"
+      >
+        View Photos
+      </span>
+    </button>
+  </div>
+  <div
+    className="topButtonsContainer"
+  >
+    <div
+      className="topButtonsInner"
+    >
+      <div
+        className="buttonOneContainer"
+      >
+        <div
+          className="buttonOneInner"
+        >
+          <button
+            aria-busy="false"
+            className="buttonOne"
+            type="button"
+          >
+            <span
+              className="buttonOneSpan"
+            >
+              <div
+                className="buttonOneText"
+                style={
+                  Object {
+                    "justifyContent": "center",
+                  }
+                }
+              >
+                <div
+                  className="buttonOneIcon"
+                >
+                  <div
+                    style={
+                      Object {
+                        "marginRight": "12px",
+                      }
+                    }
+                  >
+                    <svg
+                      aria-hidden="true"
+                      fill="currentColor"
+                      fillOpacity="0"
+                      focusable="false"
+                      role="presentation"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2.25"
+                      style={
+                        Object {
+                          "display": "block",
+                          "height": "15px",
+                          "overflow": "visible",
+                          "width": "15px",
+                        }
+                      }
+                      viewBox="0 0 24 24"
+                    >
+                      <g
+                        fillRule="evenodd"
+                      >
+                        <path
+                          d="m11.5 16v-15"
+                        />
+                        <path
+                          d="m7.5 4 4-3 4 3"
+                        />
+                        <path
+                          d="m5.4 9.5h-3.9v14h20v-14h-3.1"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+                <div
+                  className="buttonOneShare"
+                >
+                  <div>
+                    Share
+                  </div>
+                </div>
+              </div>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div
+        className="buttonTwoContainer"
+        style={
+          Object {
+            "marginLeft": "18px",
+          }
+        }
+      >
+        <span>
+          <div
+            className="buttonTwoInner"
+          >
+            <span
+              aria-hidden="true"
+              className="buttonTwoAccessSpan"
+              id="save-button-accessible-text"
+            >
+              Save this listing.
+            </span>
+            <button
+              aria-busy="false"
+              aria-describedby="save-button-accessible-text"
+              className="buttonTwo"
+              type="button"
+            >
+              <span
+                className="buttonTwoSpan"
+              >
+                <div
+                  className="buttonTwoText"
+                  style={
+                    Object {
+                      "justifyContent": "center",
+                    }
+                  }
+                >
+                  <div
+                    className="buttonTwoIcon"
+                  >
+                    <div
+                      style={
+                        Object {
+                          "marginRight": "12px",
+                        }
+                      }
+                    >
+                      <svg
+                        aria-label="Save this listing."
+                        fill="currentColor"
+                        fillOpacity="0"
+                        focusable="false"
+                        role="img"
+                        stroke="#484848"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2.25"
+                        style={
+                          Object {
+                            "display": "block",
+                            "height": "15px",
+                            "overflow": "visible",
+                            "width": "15px",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="buttonTwoSave"
+                  >
+                    <div>
+                      Save
+                    </div>
+                  </div>
+                </div>
+              </span>
+            </button>
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
 `;
