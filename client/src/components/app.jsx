@@ -29,6 +29,8 @@ class App extends React.Component {
       photoThreeOpacity: 1,
       photoFourOpacity: 1,
       photoFiveOpacity: 1,
+      hoverFour: false,
+      hoverFive: false,
 
     };
 
@@ -187,7 +189,7 @@ class App extends React.Component {
     const {
       photos, windowHeight, windowWidth, profileOpacity, currWidth, currHeight,
       photoTwoOpacity, photoThreeOpacity, photoFourOpacity, photoFiveOpacity,
-      threshold, lastThreshold, modalView, modalFocus, exitModal,
+      threshold, lastThreshold, modalView, modalFocus, exitModal, hoverFour, hoverFive
     } = this.state;
     return (
       <div className={styles.photoCarousel}>
@@ -233,6 +235,8 @@ class App extends React.Component {
               totalHeight={windowHeight}
               opacityFour={photoFourOpacity}
               opacityFive={photoFiveOpacity}
+              hoverFour={hoverFour}
+              hoverFive={hoverFive}
               hoverHandler={this.hoverHandler}
               clickHandler={this.clickHandler}
               threshold={threshold}

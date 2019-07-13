@@ -25,6 +25,7 @@ class ProfilePicture extends React.Component {
     this.updateDimensions = this.updateDimensions.bind(this);
     this.hoverHandler = this.hoverHandler.bind(this);
     this.onClickHandler = this.onClickHandler.bind(this);
+    this.checkHover = this.checkHover.bind(this);
   }
 
   componentDidMount() {
@@ -38,7 +39,7 @@ class ProfilePicture extends React.Component {
   }
 
   onClickHandler() {
-    const { clickHandler } = this.props;
+    const { clickHandler, hoverHandler } = this.props;
     clickHandler('profile');
   }
 
@@ -87,10 +88,21 @@ class ProfilePicture extends React.Component {
     const { hoverHandler } = this.props;
     if (!hover) {
       hoverHandler('profile');
+      this.setState({ hover: true });
     } else {
       hoverHandler('clear');
+      this.setState({ hover: false });
     }
-    this.setState({ hover: !hover });
+  }
+
+  checkHover() {
+    const { hover } = this.state;
+    const { hoverHandler } = this.props;
+    if (hover) {
+      this.setState({ hover: false });
+    }
+
+    hoverHandler('clear');
   }
 
 
@@ -107,7 +119,7 @@ class ProfilePicture extends React.Component {
               top: 0, minHeight: Math.ceil((totalHeight * 0.4)), maxHeight: '60%', opacity, background: `url(${tinyPhoto})`,
             }}
             height={Math.ceil((totalHeight * 0.6))} width={widthPercent} onMouseEnter={this.hoverHandler}
-            onMouseLeave={this.hoverHandler} onClick={this.onClickHandler} onMouseDown={this.hoverHandler}
+            onClick={this.onClickHandler} onMouseLeave={this.checkHover}
           />
         </div>
       </div>

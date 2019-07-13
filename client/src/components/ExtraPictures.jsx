@@ -14,14 +14,13 @@ class ExtraPictures extends React.Component {
     this.state = {
       height: '50%',
       width: Math.ceil((window.innerWidth / 4)),
-      hoverFour: false,
-      hoverFive: false,
     };
 
     this.updateDimensions = this.updateDimensions.bind(this);
     this.hoverHandler = this.hoverHandler.bind(this);
     this.onClickHandler = this.onClickHandler.bind(this);
     this.progressiveLoading = this.progressiveLoading.bind(this);
+    this.checkHover = this.checkHover.bind(this);
   }
 
   componentDidMount() {
@@ -35,7 +34,8 @@ class ExtraPictures extends React.Component {
 
   onClickHandler({ target }) {
     const { name } = target;
-    const { clickHandler } = this.props;
+    const { clickHandler, hoverHandler } = this.props;
+    hoverHandler('clear');
     clickHandler(name);
   }
 
@@ -66,22 +66,33 @@ class ExtraPictures extends React.Component {
     const { name } = target;
 
     if (name === 'four') {
-      if (!hoverFour) {
-        hoverHandler('four');
-      } else {
-        hoverHandler('clear');
-      }
-      this.setState({ hoverFour: !hoverFour });
+      hoverHandler('four');
+      this.setState({ hoverFour: true });
     }
 
     if (name === 'five') {
-      if (!hoverFive) {
-        hoverHandler('five');
-      } else {
-        hoverHandler('clear');
-      }
-      this.setState({ hoverFive: !hoverFive });
+      hoverHandler('five');
+      this.setState({ hoverFive: true });
     }
+  }
+
+  checkHover({ target }) {
+    const { hoverFour, hoverFive } = this.state;
+    const { hoverHandler } = this.props;
+    const { name } = target;
+
+    if (name === 'four') {
+      if (hoverFour) {
+        this.setState({ hoverFour: false });
+      }
+    }
+
+    if (name === 'five') {
+      if (hoverFive) {
+        this.setState({ hoverFive: false });
+      }
+    }
+    hoverHandler('clear');
   }
 
   render() {
@@ -104,8 +115,7 @@ class ExtraPictures extends React.Component {
               width={width - 4}
               name="four"
               onMouseEnter={this.hoverHandler}
-              onMouseLeave={this.hoverHandler}
-              onMouseDown={this.hoverHandler}
+              onMouseLeave={this.checkHover}
               onClick={this.onClickHandler}
             />
           </div>
@@ -125,8 +135,7 @@ class ExtraPictures extends React.Component {
               width={width - 4}
               name="five"
               onMouseEnter={this.hoverHandler}
-              onMouseLeave={this.hoverHandler}
-              onMouseDown={this.hoverHandler}
+              onMouseLeave={this.checkHover}
               onClick={this.onClickHandler}
             />
           </div>

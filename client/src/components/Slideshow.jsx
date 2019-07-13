@@ -182,7 +182,7 @@ class Slideshow extends React.Component {
                     <div>
                       <div>
                         <div className={styles.exitButton}>
-                          <button type="button" className={styles.hiddenButton} aria-busy="false" style={{ padding: 32, margin: -32 }} onClick={clickExitModal}>
+                          <button type="button" className={styles.hiddenButton} aria-busy="false" style={{ padding: 15 }} onClick={exitModal}>
                             <svg
                               viewBox="0 0 24 24"
                               role="img"
