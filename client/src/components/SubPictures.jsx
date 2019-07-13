@@ -22,6 +22,7 @@ class SubPictures extends React.Component {
     this.hoverHandler = this.hoverHandler.bind(this);
     this.onClickHandler = this.onClickHandler.bind(this);
     this.progressiveLoading = this.progressiveLoading.bind(this);
+    this.checkHover = this.checkHover.bind(this);
   }
 
   componentDidMount() {
@@ -79,20 +80,41 @@ class SubPictures extends React.Component {
     if (name === 'two') {
       if (!hoverTwo) {
         hoverHandler('two');
+        this.setState({ hoverTwo: true });
       } else {
         hoverHandler('clear');
+        this.setState({ hoverTwo: false });
       }
-      this.setState({ hoverTwo: !hoverTwo });
     }
 
     if (name === 'three') {
       if (!hoverThree) {
         hoverHandler('three');
+        this.setState({ hoverThree: true });
       } else {
         hoverHandler('clear');
+        this.setState({ hoverThree: false });
       }
-      this.setState({ hoverThree: !hoverThree });
     }
+  }
+
+  checkHover({ target }) {
+    const { hoverTwo, hoverThree } = this.state;
+    const { hoverHandler } = this.props;
+    const { name } = target;
+
+    if (name === 'two') {
+      if (hoverTwo) {
+        this.setState({ hoverTwo: false });
+      }
+    }
+
+    if (name === 'three') {
+      if (hoverThree) {
+        this.setState({ hoverThree: false });
+      }
+    }
+    hoverHandler('clear');
   }
 
   render() {
@@ -117,8 +139,7 @@ class SubPictures extends React.Component {
               width={width}
               name="two"
               onMouseEnter={this.hoverHandler}
-              onMouseLeave={this.hoverHandler}
-              onMouseDown={this.hoverHandler}
+              onMouseLeave={this.checkHover}
               onClick={this.onClickHandler}
             />
           </div>
@@ -138,8 +159,7 @@ class SubPictures extends React.Component {
               width={width}
               name="three"
               onMouseEnter={this.hoverHandler}
-              onMouseLeave={this.hoverHandler}
-              onMouseDown={this.hoverHandler}
+              onMouseLeave={this.checkHover}
               onClick={this.onClickHandler}
             />
           </div>

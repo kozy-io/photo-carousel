@@ -3,11 +3,12 @@
     font-size: 14px;
     line-height: 1.43;
     color: #484848;
-    background-color: #fff;
+    background-color: black;
     margin-top: -10;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position:relative;
+    z-index: 1;
 }
 
 .topButtonsContainer {
