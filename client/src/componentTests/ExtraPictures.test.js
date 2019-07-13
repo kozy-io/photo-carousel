@@ -21,16 +21,19 @@ describe('ExtraPictures', () => {
     expect(spy).toHaveBeenCalled();
   });
 
-  it('should handle hover correctly', () => {
+  it('should handle hover correctly on pictures', () => {
     const mockCallBack = jest.fn();
-    const component = shallow(<ExtraPictures photos={['http://lorempixel.com/1440/960/city', 'http://lorempixel.com/1440/960/city']} hoverHandler={mockCallBack} tinyPhotos={['http://lorempixel.com/60/40/city', 'http://lorempixel.com/60/40/city']} />);
+    const component = shallow(<ExtraPictures photos={['http://lorempixel.com/1440/960/city', 'http://lorempixel.com/1440/960/city']} hoverHandler={mockCallBack} checkHover={mockCallBack} tinyPhotos={['http://lorempixel.com/60/40/city', 'http://lorempixel.com/60/40/city']} />);
 
     component.setState({
       hoverFour: false,
+      hoverFive: false,
     });
 
     component.instance().hoverHandler({ target: { name: 'four' } });
     expect(component.state('hoverFour')).toEqual(true);
+    component.instance().hoverHandler({ target: { name: 'five' } });
+    expect(component.state('hoverFive')).toEqual(true);
   });
 
   it('should handle hovering off correctly', () => {
@@ -39,19 +42,22 @@ describe('ExtraPictures', () => {
 
     component.setState({
       hoverFour: true,
+      hoverFive: true,
     });
 
-    component.instance().hoverHandler({ target: { name: 'four' } });
+    component.instance().checkHover({ target: { name: 'four' } });
     expect(component.state('hoverFour')).toEqual(false);
+    component.instance().checkHover({ target: { name: 'five' } });
+    expect(component.state('hoverFive')).toEqual(false);
   });
 
   it('should handle clicking on the fourth or fifth picture correctly', () => {
     const mockCallBack = jest.fn();
-    const component = shallow(<ExtraPictures photos={['http://lorempixel.com/1440/960/city', 'http://lorempixel.com/1440/960/city']} onClickHandler={mockCallBack} tinyPhotos={['http://lorempixel.com/60/40/city', 'http://lorempixel.com/60/40/city']} />);
+    const component = shallow(<ExtraPictures photos={['http://lorempixel.com/1440/960/city', 'http://lorempixel.com/1440/960/city']} hoverHandler={mockCallBack} onClickHandler={mockCallBack} tinyPhotos={['http://lorempixel.com/60/40/city', 'http://lorempixel.com/60/40/city']} />);
     component.setProps({ clickHandler: mockCallBack });
 
     component.instance().onClickHandler({ target: { name: 'five' } });
-    expect(mockCallBack.mock.calls.length).toEqual(1);
+    expect(mockCallBack.mock.calls.length).toEqual(2);
   });
 
   it('should handle window resize', () => {

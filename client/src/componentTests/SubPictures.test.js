@@ -27,10 +27,13 @@ describe('SubPictures', () => {
 
     component.setState({
       hoverTwo: false,
+      hoverThree: false,
     });
 
     component.instance().hoverHandler({ target: { name: 'two' } });
     expect(component.state('hoverTwo')).toEqual(true);
+    component.instance().hoverHandler({ target: { name: 'three' } });
+    expect(component.state('hoverThree')).toEqual(true);
   });
 
   it('should handle hovering off correctly', () => {
@@ -39,20 +42,25 @@ describe('SubPictures', () => {
 
     component.setState({
       hoverTwo: true,
+      hoverThree: true,
     });
 
-    component.instance().hoverHandler({ target: { name: 'two' } });
+    component.instance().checkHover({ target: { name: 'two' } });
     expect(component.state('hoverTwo')).toEqual(false);
+    component.instance().checkHover({ target: { name: 'three' } });
+    expect(component.state('hoverThree')).toEqual(false);
   });
 
-  it('should handle click correctly', () => {
+  it('should handle clicking on the second or third picture correctly', () => {
     const mockCallBack = jest.fn();
-    const component = shallow(<SubPictures photos={['http://lorempixel.com/1440/960/city', 'http://lorempixel.com/1440/960/city']} onClickHandler={mockCallBack} tinyPhotos={['http://lorempixel.com/60/40/city', 'http://lorempixel.com/60/40/city']} />);
+    const component = shallow(<SubPictures photos={['http://lorempixel.com/1440/960/city', 'http://lorempixel.com/1440/960/city']} hoverHandler={mockCallBack} onClickHandler={mockCallBack} tinyPhotos={['http://lorempixel.com/60/40/city', 'http://lorempixel.com/60/40/city']} />);
     component.setProps({ clickHandler: mockCallBack });
 
     component.instance().onClickHandler({ target: { name: 'two' } });
-    expect(mockCallBack.mock.calls.length).toEqual(1);
+    component.instance().onClickHandler({ target: { name: 'three' } });
+    expect(mockCallBack.mock.calls.length).toEqual(2);
   });
+
 
   it('should handle window resize', () => {
     const component = shallow(<SubPictures photos={['http://lorempixel.com/1440/960/city', 'http://lorempixel.com/1440/960/city']} tinyPhotos={['http://lorempixel.com/60/40/city', 'http://lorempixel.com/60/40/city']} />);

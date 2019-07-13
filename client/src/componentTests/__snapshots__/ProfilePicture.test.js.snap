@@ -13,7 +13,6 @@ exports[`ProfilePicture should render correctly 1`] = `
       height={NaN}
       id="profilePicture"
       onClick={[Function]}
-      onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       style={

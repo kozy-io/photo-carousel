@@ -33,6 +33,18 @@ describe('ProfilePicture', () => {
     expect(mockCallBack.mock.calls.length).toEqual(1);
   });
 
+  it('should handle hover off correctly', () => {
+    const mockCallBack = jest.fn();
+    const component = shallow(<ProfilePicture hoverHandler={mockCallBack} checkHover={mockCallBack} />);
+
+    component.setState({
+      hover: true,
+    });
+
+    component.instance().checkHover();
+    expect(component.state('hover')).toEqual(false);
+  });
+
   it('should handle click correctly', () => {
     const mockCallBack = jest.fn();
     const component = shallow(<ProfilePicture clickHandler={mockCallBack} />);
