@@ -63,4 +63,20 @@ describe('ProfilePicture', () => {
 
     expect(spy).toHaveBeenCalled();
   });
+
+  it('should reposition on window resize upon crossing a certain threshold', () => {
+    const component = shallow(<ProfilePicture threshold={744} lastThreshold={1128} totalWidth={1000} />);
+
+    component.instance().updateDimensions();
+
+    expect(component.state().widthPercent).toEqual('75%');
+  });
+
+  it('should reposition on window resize upon crossing a last threshold', () => {
+    const component = shallow(<ProfilePicture threshold={744} lastThreshold={1128} totalWidth={700} />);
+
+    component.instance().updateDimensions();
+
+    expect(component.state().widthPercent).toEqual('100%');
+  });
 });

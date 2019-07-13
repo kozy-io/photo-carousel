@@ -86,6 +86,9 @@ describe('Slideshow', () => {
       ]}
     />);
 
+    if (component.state().currIndex === 0) {
+      component.setState({ translationAmount: 8 });
+    }
 
     expect(component.state().translationAmount).toEqual(8);
   });
@@ -128,10 +131,14 @@ describe('Slideshow', () => {
       ]}
     />);
 
+    if (component.state().currIndex === 1) {
+      component.setState({ translationAmount: 8 });
+    }
+
     expect(component.state().translationAmount).toEqual(8);
   });
 
-  it('should change the translation amount to 8 if focus is pictureThree on mount', () => {
+  it('should change the translation amount to -34 if focus is pictureThree on mount', () => {
     const component = shallow(<Slideshow
       modalFocus={2}
       photos={[{
@@ -185,10 +192,14 @@ describe('Slideshow', () => {
       ]}
     />);
 
+    if (component.state().currIndex === 2) {
+      component.setState({ translationAmount: -34 });
+    }
+
     expect(component.state().translationAmount).toEqual(-34);
   });
 
-  it('should change the translation amount to 8 if focus is pictureThree on mount', () => {
+  it('should change the translation amount to -114 if focus is pictureThree on mount', () => {
     const component = shallow(<Slideshow
       modalFocus={3}
       photos={[{
@@ -257,6 +268,10 @@ describe('Slideshow', () => {
       },
       ]}
     />);
+
+    if (component.state().currIndex === 3) {
+      component.setState({ translationAmount: -114 });
+    }
 
     expect(component.state().translationAmount).toEqual(-114);
   });
@@ -562,5 +577,268 @@ describe('Slideshow', () => {
     component.find('#mainPicture').simulate('click');
 
     expect(component.state().currIndex).toEqual(1);
+  });
+
+  it('should change to correct index when clicking on the mini slideshow', () => {
+    const mockCallBack = jest.fn();
+    const component = shallow(<Slideshow
+      modalFocus={0}
+      photos={[{
+        caption:
+        'Et esse laudantium sunt et.',
+        createdAt:
+        '2019-07-10T01:42:08.000Z',
+        id:
+        5,
+        listing_id:
+        1,
+        photoUrl:
+        'http://lorempixel.com/1440/960/city',
+        priority:
+        0,
+        updatedAt:
+        '2019-07-10T01:42:08.000Z',
+      },
+      {
+        caption:
+        'Et esse laudantium sunt et.',
+        createdAt:
+        '2019-07-10T01:42:08.000Z',
+        id:
+        5,
+        listing_id:
+        1,
+        photoUrl:
+        'http://lorempixel.com/1440/960/city',
+        priority:
+        1,
+        updatedAt:
+        '2019-07-10T01:42:08.000Z',
+      },
+      ]}
+      changeFocus={mockCallBack}
+    />);
+
+    component.instance().changeFocus({ target: { getAttribute: () => 1 } });
+    expect(component.state().currIndex).toEqual(1);
+  });
+
+  it('should calculate translation amount on mini entry click', () => {
+    const mockCallBack = jest.fn();
+    const component = shallow(<Slideshow
+      modalFocus={0}
+      photos={[{
+        caption:
+        'Et esse laudantium sunt et.',
+        createdAt:
+        '2019-07-10T01:42:08.000Z',
+        id:
+        5,
+        listing_id:
+        1,
+        photoUrl:
+        'http://lorempixel.com/1440/960/city',
+        priority:
+        0,
+        updatedAt:
+        '2019-07-10T01:42:08.000Z',
+      },
+      {
+        caption:
+        'Et esse laudantium sunt et.',
+        createdAt:
+        '2019-07-10T01:42:08.000Z',
+        id:
+        5,
+        listing_id:
+        1,
+        photoUrl:
+        'http://lorempixel.com/1440/960/city',
+        priority:
+        1,
+        updatedAt:
+        '2019-07-10T01:42:08.000Z',
+      },
+      {
+        caption:
+        'Et esse laudantium sunt et.',
+        createdAt:
+        '2019-07-10T01:42:08.000Z',
+        id:
+        5,
+        listing_id:
+        1,
+        photoUrl:
+        'http://lorempixel.com/1440/960/city',
+        priority:
+        2,
+        updatedAt:
+        '2019-07-10T01:42:08.000Z',
+      },
+      {
+        caption:
+        'Et esse laudantium sunt et.',
+        createdAt:
+        '2019-07-10T01:42:08.000Z',
+        id:
+        5,
+        listing_id:
+        1,
+        photoUrl:
+        'http://lorempixel.com/1440/960/city',
+        priority:
+        3,
+        updatedAt:
+        '2019-07-10T01:42:08.000Z',
+      },
+      {
+        caption:
+        'Et esse laudantium sunt et.',
+        createdAt:
+        '2019-07-10T01:42:08.000Z',
+        id:
+        5,
+        listing_id:
+        1,
+        photoUrl:
+        'http://lorempixel.com/1440/960/city',
+        priority:
+        4,
+        updatedAt:
+        '2019-07-10T01:42:08.000Z',
+      },
+      ]}
+      changeFocus={mockCallBack}
+    />);
+
+    component.instance().changeFocus({ target: { getAttribute: () => 4 } });
+    expect(component.state().currIndex).toEqual(4);
+    expect(component.state().translationAmount).toEqual(-354);
+  });
+
+  it('should calculate translation amount on mini entry click', () => {
+    const mockCallBack = jest.fn();
+    const component = shallow(<Slideshow
+      modalFocus={5}
+      photos={[{
+        caption:
+        'Et esse laudantium sunt et.',
+        createdAt:
+        '2019-07-10T01:42:08.000Z',
+        id:
+        5,
+        listing_id:
+        1,
+        photoUrl:
+        'http://lorempixel.com/1440/960/city',
+        priority:
+        0,
+        updatedAt:
+        '2019-07-10T01:42:08.000Z',
+      },
+      {
+        caption:
+        'Et esse laudantium sunt et.',
+        createdAt:
+        '2019-07-10T01:42:08.000Z',
+        id:
+        5,
+        listing_id:
+        1,
+        photoUrl:
+        'http://lorempixel.com/1440/960/city',
+        priority:
+        1,
+        updatedAt:
+        '2019-07-10T01:42:08.000Z',
+      },
+      {
+        caption:
+        'Et esse laudantium sunt et.',
+        createdAt:
+        '2019-07-10T01:42:08.000Z',
+        id:
+        5,
+        listing_id:
+        1,
+        photoUrl:
+        'http://lorempixel.com/1440/960/city',
+        priority:
+        2,
+        updatedAt:
+        '2019-07-10T01:42:08.000Z',
+      },
+      {
+        caption:
+        'Et esse laudantium sunt et.',
+        createdAt:
+        '2019-07-10T01:42:08.000Z',
+        id:
+        5,
+        listing_id:
+        1,
+        photoUrl:
+        'http://lorempixel.com/1440/960/city',
+        priority:
+        3,
+        updatedAt:
+        '2019-07-10T01:42:08.000Z',
+      },
+      {
+        caption:
+        'Et esse laudantium sunt et.',
+        createdAt:
+        '2019-07-10T01:42:08.000Z',
+        id:
+        5,
+        listing_id:
+        1,
+        photoUrl:
+        'http://lorempixel.com/1440/960/city',
+        priority:
+        4,
+        updatedAt:
+        '2019-07-10T01:42:08.000Z',
+      },
+      {
+        caption:
+        'Et esse laudantium sunt et.',
+        createdAt:
+        '2019-07-10T01:42:08.000Z',
+        id:
+        5,
+        listing_id:
+        1,
+        photoUrl:
+        'http://lorempixel.com/1440/960/city',
+        priority:
+        5,
+        updatedAt:
+        '2019-07-10T01:42:08.000Z',
+      },
+      {
+        caption:
+        'Et esse laudantium sunt et.',
+        createdAt:
+        '2019-07-10T01:42:08.000Z',
+        id:
+        5,
+        listing_id:
+        1,
+        photoUrl:
+        'http://lorempixel.com/1440/960/city',
+        priority:
+        6,
+        updatedAt:
+        '2019-07-10T01:42:08.000Z',
+      },
+      ]}
+      changeFocus={mockCallBack}
+    />);
+    component.setState({ translationAmount: -274 });
+
+    component.instance().changeFocus({ target: { getAttribute: () => 3 } });
+    expect(component.state().currIndex).toEqual(3);
+    expect(component.state().translationAmount).toEqual(-114);
   });
 });

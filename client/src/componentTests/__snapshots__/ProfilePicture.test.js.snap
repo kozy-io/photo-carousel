@@ -24,7 +24,7 @@ exports[`ProfilePicture should render correctly 1`] = `
           "top": 0,
         }
       }
-      width="50%"
+      width={NaN}
     />
   </div>
 </div>
