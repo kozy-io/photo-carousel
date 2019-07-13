@@ -42,8 +42,7 @@ exports[`Slideshow should render correctly 1`] = `
                       className="hiddenButton"
                       style={
                         Object {
-                          "margin": -32,
-                          "padding": 32,
+                          "padding": 15,
                         }
                       }
                       type="button"

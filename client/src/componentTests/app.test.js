@@ -616,7 +616,7 @@ describe('App', () => {
     expect(component.state().modalFocus).toEqual(0);
   });
 
-  it('Should exit modalSlideshow when you click the exit button', () => {
+  it('Should exit modalSlideshow when you press escape', () => {
     const component = shallow(<App />);
     component.setState({
       modalView: true,
@@ -624,6 +624,18 @@ describe('App', () => {
     });
 
     component.instance().exitModal();
+
+    expect(component.find('Slideshow').length).toEqual(0);
+  });
+
+  it('Should exit modalSlideshow when you click the exit button', () => {
+    const component = shallow(<App />);
+    component.setState({
+      modalView: true,
+      modalFocus: 0,
+    });
+
+    component.instance().clickExitModal();
 
     expect(component.find('Slideshow').length).toEqual(0);
   });
