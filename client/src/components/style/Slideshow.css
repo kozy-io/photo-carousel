@@ -74,17 +74,25 @@ svg:not(:root) {
 
 @media (min-width: 1128px) {
     .photoContainer {
-        width: 100% !important;
+        width: 65vw !important;
+        display: table-cell !important;
+        padding: 64px !important;
         margin-bottom: 0px !important;
         height: 75vh !important;
     }
 }
 
-@media (min-width: 744px) {
+@media (max-width: 1128px) {
     .photoContainer {
-        width: 65vw !important;
-        display: table-cell !important;
-        padding: 64px !important;
+        margin-top: 20px !important;
+        height: 50vh !important;
+    }
+}
+
+@media (max-width: 744px) {
+    .photoContainer {
+        width: 100vw !important;
+        height: 20vh !important;
     }
 }
 
@@ -176,6 +184,13 @@ svg:not(:root) {
     }
 }
 
+@media (max-width: 1128px) {
+    .miniCarouselContainer {
+        /* margin-top: 170px !important; */
+        padding-top: 100px !important;
+    }
+}
+
 .miniCarouselContainer {
     overflow: hidden;
 }
@@ -208,9 +223,11 @@ svg:not(:root) {
     }
 }
 
-.miniCarouselBottom {
-    /* width: 604px !important; */
-    /* margin: 0px auto 16px !important; */
+@media (max-width: 1127px) {
+    .miniCarouselBottom {
+        width: 50vw !important;
+        margin: 0px auto 16px !important;
+    }
 }
 
 .miniCarouselOuter {

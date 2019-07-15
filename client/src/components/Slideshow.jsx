@@ -26,7 +26,6 @@ class Slideshow extends React.Component {
   componentDidMount() {
     const { currIndex, translationAmount } = this.state;
     let tmp = translationAmount;
-
     window.addEventListener('keydown', this.logKey);
 
     switch (currIndex) {

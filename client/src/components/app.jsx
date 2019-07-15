@@ -189,7 +189,7 @@ class App extends React.Component {
     const {
       photos, windowHeight, windowWidth, profileOpacity, currWidth, currHeight,
       photoTwoOpacity, photoThreeOpacity, photoFourOpacity, photoFiveOpacity,
-      threshold, lastThreshold, modalView, modalFocus, exitModal, hoverFour, hoverFive
+      threshold, lastThreshold, modalView, modalFocus, exitModal, hoverFour, hoverFive,
     } = this.state;
     return (
       <div className={styles.photoCarousel}>
@@ -246,7 +246,15 @@ class App extends React.Component {
         }
         {photos.length > 0 && modalView
           ? (
-            <Slideshow modalFocus={modalFocus} exitModal={this.exitModal} photos={photos} modalView={modalView} clickExitModal={this.clickExitModal}/>
+            <Slideshow
+              modalFocus={modalFocus}
+              totalWidth={windowWidth}
+              totalHeight={windowHeight}
+              exitModal={this.exitModal}
+              photos={photos}
+              modalView={modalView}
+              clickExitModal={this.clickExitModal}
+            />
           )
           : undefined
          }

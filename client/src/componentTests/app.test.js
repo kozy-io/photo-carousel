@@ -159,18 +159,6 @@ describe('App', () => {
     expect(component.state().modalView).toEqual(true);
   });
 
-  it('should update state on picture one click', () => {
-    const component = shallow(<App />);
-    component.setState({
-      modalFocus: 3,
-      modalView: false,
-    });
-    component.instance().clickHandler('one');
-
-    expect(component.state().modalFocus).toEqual(1);
-    expect(component.state().modalView).toEqual(true);
-  });
-
   it('should update state on picture two click', () => {
     const component = shallow(<App />);
     component.setState({
@@ -179,7 +167,7 @@ describe('App', () => {
     });
     component.instance().clickHandler('two');
 
-    expect(component.state().modalFocus).toEqual(2);
+    expect(component.state().modalFocus).toEqual(1);
     expect(component.state().modalView).toEqual(true);
   });
 
@@ -191,7 +179,7 @@ describe('App', () => {
     });
     component.instance().clickHandler('three');
 
-    expect(component.state().modalFocus).toEqual(3);
+    expect(component.state().modalFocus).toEqual(2);
     expect(component.state().modalView).toEqual(true);
   });
 
@@ -203,7 +191,7 @@ describe('App', () => {
     });
     component.instance().clickHandler('four');
 
-    expect(component.state().modalFocus).toEqual(4);
+    expect(component.state().modalFocus).toEqual(3);
     expect(component.state().modalView).toEqual(true);
   });
 
