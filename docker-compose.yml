@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  photocarousel:
+    build: ./
+    depends_on:
+      - 'database'
+    ports: 
+      - '4000:3002'
+
+  database:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=guestly
