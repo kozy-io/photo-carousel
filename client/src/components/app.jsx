@@ -57,6 +57,7 @@ class App extends React.Component {
 
     axios.get(`/api/listings/photos/${id}`)
       .then((response) => {
+        console.log(response.data);
         this.setState({
           photos: response.data,
         });
