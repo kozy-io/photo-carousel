@@ -7,7 +7,9 @@
     "react-dev": "webpack -d --watch",
     "test": "jest",
     "start": "nodemon index.js",
-    "seed": "node ./server/db/seed.js"
+    "seed": "node ./server/db/seed.js",
+    "tables": "node ./server/db/index.js",
+    "start:docker": "npm run tables && npm run seed && npm run start"
 
   },
   "jest": {

@@ -1,8 +1,7 @@
 const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize('guestly', 'root', '', {
-  host: 'database',
-  port: 3306,
+  host: '172.17.0.2',
   dialect: 'mysql',
 });
 
