@@ -68,7 +68,7 @@ const generateList = () => {
   }
 };
 
-// generateUser();
-// generateListing();
+generateUser();
+generateListing();
 generatePhoto();
-// generateList();
+generateList();

@@ -1,14 +1,8 @@
 const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize('guestly', 'root', '', {
-  host: 'localhost',
+  host: '172.17.0.2',
   dialect: 'mysql',
-
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000,
-  },
 });
 
 const User = sequelize.define('user', {
@@ -128,7 +122,7 @@ const List = sequelize.define('list', {
 
 sequelize.sync()
   .then(res => console.log('Connection Established!'))
-  .catch(err => console.log('Connection Failed'));
+  .catch(err => console.log(err));
 
 module.exports = {
   sequelize, User, Listing, Photo, List,
