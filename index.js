@@ -12,9 +12,6 @@ const port = 3002;
 app.use(morgan('tiny'));
 app.use(bodyParser());
 
-// app.use('/', express.static(path.resolve(__dirname, './public/dist')));
-// app.use('/photoCarousel/:listingID', express.static(path.resolve(__dirname, './public/dist')));
-
 app.use('/', expressStaticGzip(path.resolve(__dirname, './public/dist'), {
   enableBrotli: true,
   orderPreference: ['br', 'gz'],
