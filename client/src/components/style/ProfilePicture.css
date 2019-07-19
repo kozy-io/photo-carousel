@@ -19,6 +19,7 @@
     border: 1px solid;
     position: absolute !important;
     background-color: black !important;
+    object-fit: cover;
 }
 
 .picture {

@@ -2,15 +2,34 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
+const expressStaticGzip = require('express-static-gzip');
 const db = require('./server/db/index.js');
+
 
 const app = express();
 const port = 3002;
 
 app.use(morgan('tiny'));
 app.use(bodyParser());
-app.use('/', express.static(path.resolve(__dirname, './public/dist')));
-app.use('/photoCarousel/:listingID', express.static(path.resolve(__dirname, './public/dist')));
+
+// app.use('/', express.static(path.resolve(__dirname, './public/dist')));
+// app.use('/photoCarousel/:listingID', express.static(path.resolve(__dirname, './public/dist')));
+
+app.use('/', expressStaticGzip(path.resolve(__dirname, './public/dist'), {
+  enableBrotli: true,
+  orderPreference: ['br', 'gz'],
+  setHeaders(res, path) {
+    res.setHeader('Cache-Control', 'public, max-age=31536000');
+  },
+}));
+
+app.use('/photoCarousel/:listingID', expressStaticGzip(path.resolve(__dirname, './public/dist'), {
+  enableBrotli: true,
+  orderPreference: ['br', 'gz'],
+  setHeaders(res, path) {
+    res.setHeader('Cache-Control', 'public, max-age=31536000');
+  },
+}));
 
 
 app.get('/api/listings/info/:listingID', (req, res) => {

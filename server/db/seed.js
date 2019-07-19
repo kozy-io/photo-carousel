@@ -40,7 +40,7 @@ const generatePhoto = () => {
     } else {
       while (listing_id <= 100) {
         for (let priority = 0; priority < 6; priority++) {
-          const photoUrl = houseData.results[priority].urls.full;
+          const photoUrl = houseData.results[priority].urls.regular;
           const tinyPhotoUrl = houseData.results[priority].urls.thumb;
           const caption = faker.lorem.sentence(5);
           db.Photo.create({

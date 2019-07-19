@@ -66,19 +66,19 @@ class ProfilePicture extends React.Component {
       this.setState({
         width: Math.ceil((window.innerWidth / 2)),
         height: Math.ceil((window.innerWidth / 2)),
-        widthPercent: '100%',
+        widthPercent: '100',
       });
     } else if ((currWidth < threshold && currWidth > lastThreshold) || totalWidth <= 1128) {
       this.setState({
         width: Math.ceil((window.innerWidth / 2)),
         height: Math.ceil((window.innerWidth / 2)),
-        widthPercent: '75%',
+        widthPercent: '75',
       });
     } else {
       this.setState({
         width: Math.ceil((window.innerWidth / 2)),
         height: Math.ceil((window.innerWidth / 2)),
-        widthPercent: '50%',
+        widthPercent: '50',
       });
     }
   }
@@ -112,13 +112,13 @@ class ProfilePicture extends React.Component {
       totalHeight, totalWidth, opacity, photo, currWidth, threshold, lastThreshold, clickHandler, tinyPhoto,
     } = this.props;
     return (
-      <div className={styles.profileContainer}>
+      <div className={styles.profileContainer} style={{ width: `${widthPercent}vw` }}>
         <div className={styles.imgHoverZoom}>
           <img src={tinyPhoto} data-src={photo} id="profilePicture" className={[styles.picture, styles.blur].join(' ')} alt=""
             style={{
               top: 0, minHeight: Math.ceil((totalHeight * 0.4)), maxHeight: '60%', opacity, background: `url(${tinyPhoto})`,
             }}
-            height={Math.ceil((totalHeight * 0.6))} width={widthPercent} onMouseEnter={this.hoverHandler}
+            height={Math.ceil((totalHeight * 0.6))} width="100%" onMouseEnter={this.hoverHandler}
             onClick={this.onClickHandler} onMouseLeave={this.checkHover}
           />
         </div>
