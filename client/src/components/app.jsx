@@ -55,10 +55,23 @@ class App extends React.Component {
     const parts = window.location.href.split('/');
     const id = parts[parts.length - 2];
 
-    axios.get(`/api/listings/photos/${id}`)
+    axios.get(`/api/listings/photos/initial/${id}`)
       .then((response) => {
         this.setState({
           photos: response.data,
+        }, () => {
+          axios.get(`/api/listings/photos/${id}`)
+            .then((response) => {
+              const { photos } = this.state;
+              let allPhotos = photos.slice();
+              allPhotos = allPhotos.concat(response.data);
+              this.setState({
+                photos: allPhotos,
+              });
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         });
       })
       .catch((error) => {

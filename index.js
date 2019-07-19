@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
 const expressStaticGzip = require('express-static-gzip');
+const { Op } = require('sequelize');
 const db = require('./server/db/index.js');
 
 
@@ -40,17 +41,23 @@ app.get('/api/listings/info/:listingID', (req, res) => {
     .catch(err => res.send(err));
 });
 
-app.get('/photoCarousel/:listingID', (req, res) => {
+
+app.get('/api/listings/photos/initial/:listingID', (req, res) => {
   const { listingID } = req.params;
 
-  db.Listing.findOne({
+  db.Photo.findAll({
     where: {
-      id: listingID,
+      listing_id: listingID,
+      priority: {
+        [Op.lte]: 4,
+      },
     },
+    order: [
+      ['priority', 'ASC'],
+    ],
   }).then(result => res.send(result))
     .catch(err => res.send(err));
 });
-
 
 app.get('/api/listings/photos/:listingID', (req, res) => {
   const { listingID } = req.params;
@@ -58,6 +65,9 @@ app.get('/api/listings/photos/:listingID', (req, res) => {
   db.Photo.findAll({
     where: {
       listing_id: listingID,
+      priority: {
+        [Op.gte]: 5,
+      },
     },
     order: [
       ['priority', 'ASC'],

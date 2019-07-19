@@ -31,17 +31,21 @@ const generateListing = () => {
 
 const generatePhoto = () => {
   let listing_id = 1;
-  // const topics = ['abstract', 'animals', 'business', 'cats', 'food', 'nightlife', 'fashion', 'people', 'nature', 'sports', 'technics', 'transport'];
-  // let index = 0;
 
   unsplash.getImages('house', (err, houseData) => {
     if (err) {
       console.log(err);
     } else {
       while (listing_id <= 100) {
-        for (let priority = 0; priority < 6; priority++) {
-          const photoUrl = houseData.results[priority].urls.regular;
-          const tinyPhotoUrl = houseData.results[priority].urls.thumb;
+        let randomNumber =  Math.floor(Math.random() * Math.floor(29));
+        if (randomNumber < 5) {
+          randomNumber = 5;
+        }
+
+        for (let priority = 0; priority < randomNumber; priority++) {
+          let randomImage =  Math.floor(Math.random() * Math.floor(29));
+          const photoUrl = houseData.results[randomImage].urls.regular;
+          const tinyPhotoUrl = houseData.results[randomImage].urls.thumb;
           const caption = faker.lorem.sentence(5);
           db.Photo.create({
             listing_id, photoUrl, tinyPhotoUrl, priority, caption,
