@@ -18,6 +18,14 @@
 ```sh
 npm run react-dev
 ```
+> Run server on port 3000
+```sh
+npm start
+```
+> Seed database with random data using faker.js
+```sh
+npm run seed
+```
 > Run jest/enzyme tests
 ```sh
 npm test
@@ -26,7 +34,10 @@ npm test
 ## Requirements
 
 - Node 6.13.0
-- etc
+- Unsplash API key
+```sh
+Replace comment with your API key
+```
 
 ## Development
 
