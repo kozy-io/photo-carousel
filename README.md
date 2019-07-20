@@ -18,7 +18,7 @@
 ```sh
 npm run react-dev
 ```
-> Run server on port 3000
+> Run server on port 3002
 ```sh
 npm start
 ```
