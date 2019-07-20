@@ -36,7 +36,7 @@ npm test
 - Node 6.13.0
 - Unsplash API key
 ```sh
-Replace comment with your API key
+Replace comment with your API key in unsplashHelper.js
 ```
 
 ## Development
