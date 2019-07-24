@@ -1,50 +1,13 @@
 # PhotoCarousel
 
-> Photo Carousel module of Guestly
+> Photo Carousel module for Kozy app
 
-## Related Projects
+# Restful CRUD API:
 
-  - https://github.com/guest-ly/Reservations
-  - https://github.com/guest-ly/Listing
-
-## Table of Contents
-
-1. [Usage](#Usage)
-2. [Requirements](#requirements)
-3. [Development](#development)
-
-## Usage
-> Run webpack
-```sh
-npm run react-dev
-```
-> Run server on port 3002
-```sh
-npm start
-```
-> Seed database with random data using faker.js
-```sh
-npm run seed
-```
-> Run jest/enzyme tests
-```sh
-npm test
-```
-
-## Requirements
-
-- Node 6.13.0
-- Unsplash API key
-```sh
-Replace comment with your API key in unsplashHelper.js
-```
-
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-npm install
-```
+| Method    | Endpoint                                | Description                              |
+|-----------|---------------------------------------- |------------------------------------------|
+|GET        | /api/listings/photos/initial/:listingID | Get photos by listingID (priority <= 4)  |
+|GET        |/api/listings/photos/:listingID          | Get photos by listingID (priority >= 5)  |
+|POST       |/api/listings/photos/:listingID          | Create a photo into a specific listingID)|
+|PUT        |/api/listings/photos/:listingID/:photoID | Edit a photo into a specific listingID   |
+|DELETE     |/api/listings/photos/:listingID/:photoID | Delete a photo into a specific listingID |
