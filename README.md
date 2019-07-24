@@ -2,7 +2,7 @@
 
 > Photo Carousel module for Kozy app
 
-# Restful CRUD API:
+## Restful CRUD API:
 
 | Method    | Endpoint                                | Description                              |
 |-----------|---------------------------------------- |------------------------------------------|
