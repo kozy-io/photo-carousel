@@ -1,23 +1,24 @@
 const path = require('path');
-var BrotliGzipPlugin = require('brotli-gzip-webpack-plugin');
+// var BrotliGzipPlugin = require('brotli-gzip-webpack-plugin');
 
 module.exports = {
-  plugins: [
-    new BrotliGzipPlugin({
-        asset: '[path].br[query]',
-        algorithm: 'brotli',
-        test: /\.(js|css|html|svg)$/,
-        threshold: 10240,
-        minRatio: 0.8
-    }),
-    new BrotliGzipPlugin({
-        asset: '[path].gz[query]',
-        algorithm: 'gzip',
-        test: /\.(js|css|html|svg)$/,
-        threshold: 10240,
-        minRatio: 0.8
-    })
-  ],
+  // WHEN READY TO PRODUCTION, UNCOMMENT:
+  // plugins: [
+  //   new BrotliGzipPlugin({
+  //       asset: '[path].br[query]',
+  //       algorithm: 'brotli',
+  //       test: /\.(js|css|html|svg)$/,
+  //       threshold: 10240,
+  //       minRatio: 0.8
+  //   }),
+  //   new BrotliGzipPlugin({
+  //       asset: '[path].gz[query]',
+  //       algorithm: 'gzip',
+  //       test: /\.(js|css|html|svg)$/,
+  //       threshold: 10240,
+  //       minRatio: 0.8
+  //   })
+  // ],
   mode: 'development',
   watch: true,
   entry: path.resolve(__dirname, 'client/src/index.jsx'),

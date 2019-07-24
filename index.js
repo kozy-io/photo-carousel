@@ -13,21 +13,27 @@ const port = 3002;
 app.use(morgan('tiny'));
 app.use(bodyParser());
 
-app.use('/', expressStaticGzip(path.resolve(__dirname, './public/dist'), {
-  enableBrotli: true,
-  orderPreference: ['br', 'gz'],
-  setHeaders(res, path) {
-    res.setHeader('Cache-Control', 'public, max-age=31536000');
-  },
-}));
+// WHEN READY TO PRODUCTION, UNCOMMENT:
+// app.use('/', expressStaticGzip(path.resolve(__dirname, './public/dist'), {
+//   enableBrotli: true,
+//   orderPreference: ['br', 'gz'],
+//   setHeaders(res, path) {
+//     res.setHeader('Cache-Control', 'public, max-age=31536000');
+//   },
+// }));
 
-app.use('/photoCarousel/:listingID', expressStaticGzip(path.resolve(__dirname, './public/dist'), {
-  enableBrotli: true,
-  orderPreference: ['br', 'gz'],
-  setHeaders(res, path) {
-    res.setHeader('Cache-Control', 'public, max-age=31536000');
-  },
-}));
+// app.use('/photoCarousel/:listingID', expressStaticGzip(path.resolve(__dirname, './public/dist'), {
+//   enableBrotli: true,
+//   orderPreference: ['br', 'gz'],
+//   setHeaders(res, path) {
+//     res.setHeader('Cache-Control', 'public, max-age=31536000');
+//   },
+// }));
+
+
+app.use('/',express.static(path.resolve(__dirname, './public/dist')));
+
+app.use('/photoCarousel/:listingID', express.static(path.resolve(__dirname, './public/dist')));
 
 
 app.get('/api/listings/info/:listingID', (req, res) => {
