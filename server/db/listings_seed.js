@@ -13,8 +13,8 @@ const csvListings = createCsvWriter({
 });
 
 const generateListing = () => {
-  const data = [];
-  for (let i = 0; i < 100; i++) {
+  let data = [];
+  for (let i = 1; i <= 100; i++) {
     data.push({
       id: i,
       title: faker.lorem.sentence(3),
