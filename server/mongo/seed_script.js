@@ -75,8 +75,6 @@ const Favorite = (favorite_id, user_id, listing_id) => ({
   title: faker.lorem.sentence(1)
 })
 
-
-
 let generateUsers = () => {
   let data = [];
   const numUsers = 5; // increase this number after testing
@@ -86,7 +84,16 @@ let generateUsers = () => {
   return data;
 }
 
-console.log(generateUsers())
+let generateListings = () => {
+  let data = [];
+  let numListings = Math.floor(Math.random() * Math.floor(10));
+  for (let id = 1; id <= numListings; id++){
+    data.push(Listing(id, 1, [], []))
+  }
+  return data;
+}
+
+console.log(generateListings())
 
 
 
