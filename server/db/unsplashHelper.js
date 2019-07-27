@@ -1,11 +1,10 @@
-
 const axios = require('axios');
-const API_KEY = require('../../config.js');
+const { UnsplashAPI_KEY } = require('../../config.js');
 
 module.exports = {
   getImages: (query, cb) => {
     const url = `https://api.unsplash.com/search/photos?query=${query}&page=1&per_page=30&orientation=landscape`;
-    axios.get(url, { headers: { Authorization: `Client-ID ${API_KEY}` } })
+    axios.get(url, { headers: { Authorization: `Client-ID ${UnsplashAPI_KEY}` } })
       .then((response) => {
         cb(null, response.data);
       })
