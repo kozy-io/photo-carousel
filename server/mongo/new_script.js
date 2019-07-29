@@ -87,106 +87,34 @@ const Favorite = (favorite_id, user_id, listing_id) => ({
   title: faker.lorem.sentence(1)
 })
 
-let generateUsers = () => {
-  let data = [];
+const usersData = [];
+const listingsdata = [];
+
+let generateUsers = (() => {
   const numUsers = 5; // increase this number after testing
   for (let id = 1; id <= numUsers; id++){
-    data.push(User(id, [], []))
+    usersData.push(User(id, [], []))
   }
-  return data;
-}
+})();
 
-let generateListings = () => {
-  let data = [];
-  let numListings = Math.floor(Math.random() * Math.floor(10));
-  for (let id = 1; id <= numListings; id++){
-    data.push(Listing(id, 1, [], []))
-  }
-  return data;
-}
+const idsUsers = usersData.reduce((acc, cur) => {
+  const id = cur._id
+  return acc.concat(id)
+}, [])
 
-let generatePhotos = () => {
-  let data = [];
-  let listing_id = 1;
-  let photo_id = 1
-
-  while (listing_id <= 5) {
-    let randomNumber =  Math.floor(Math.random() * Math.floor(30));
-    if (randomNumber < 5) {
-      randomNumber = 5;
+let generateListings = (() => {
+  let listingId = 0;
+  idsUsers.map(userId => {
+    const random = Math.floor(Math.random() * Math.floor(10))
+    console.log(random)
+    for (let j = 0; j < random; j++){
+      listingId++;
+      listingsdata.push(Listing(listingId, userId, [], []))
     }
-    for (let priority = 0; priority < randomNumber; priority++) {
-      data.push(Photo(photo_id, listing_id, priority))
-      photo_id++;
-    }
-    listing_id++;
-  }
-  return data;
-}
+  })
 
-let generateFavorites = () => {
-  let data = [];
-  let user_id = 1;
-  let listing_id = 1
-  let numFavorites = Math.floor(Math.random() * Math.floor(15));
-  for (let id = 1; id <= numFavorites; id++){
-    data.push(Favorite(id, user_id, listing_id))
-  }
-  return data;
-}
+})();
 
-// usersCsv
-//   .writeRecords(generateUsers())
-//   .then(()=> console.log('The CSV file was written successfully'));
-
-// listingsCsv
-//   .writeRecords(generateListings())
-//   .then(()=> console.log('The CSV file was written successfully'));
-
-// photosCsv
-//   .writeRecords(generatePhotos())
-//   .then(()=> console.log('The CSV file was written successfully'));
-
-// favoritesCsv
-//   .writeRecords(generateFavorites())
-//   .then(()=> console.log('The CSV file was written successfully'));
+console.log(listingsdata)
 
 
-
-let numUsers = 5;
-let numListings = 0
-let numPhotos = 0
-
-let idsListings = 0;
-
-let numListingsByUser = []
-let numPhotosByListing = []
-
-let listingsByUser = []
-
-for (let user = 1; user <= numUsers; user++){
-  let random = Math.floor(Math.random() * Math.floor(10))
-  numListingsByUser.push({[user]: random})
-  numListings += random;
-}
-
-for (let i = 0; i < numListingsByUser.length; i++){
-  const value = Object.values(numListingsByUser[i])[0];
-  for (let j = idsListings; j < value + idsListings; j++){
-    let random = Math.floor(Math.random() * Math.floor(10))
-    numPhotosByListing.push({[j+1]: random})
-    numPhotos += random
-  }
-  idsListings += value
-}
-
-for (let i = 0; )
-
-let generateUsers = () => {
-  let data = [];
-  
-  for (let id = 1; id <= numUsers; id++){
-    data.push(User(id, [], []))
-  }
-  return data;
-}
