@@ -93,7 +93,7 @@ const photosData = [];
 const favoritesData = [];
 
 let generateUsers = (() => {
-  const numUsers = 5; // increase this number after testing
+  const numUsers = 100; // increase this number after testing
   for (let id = 1; id <= numUsers; id++){
     usersData.push(User(id, [], []))
   }
@@ -149,6 +149,46 @@ let generateFavorites = (() => {
     }
   })
 })();
+
+// populate users.favorites:
+usersData.map(user => {
+  const favoritesIds = favoritesData.filter(favorite => favorite.user_id === user._id)
+    .reduce((acc,cur) => {
+      const id = cur._id
+      return acc.concat(id)
+    }, []);
+  user.favorites = favoritesIds;
+})
+
+// populate users.listings:
+usersData.map(user => {
+  const listingsIds = listingsdata.filter(listing => listing.user_id === user._id)
+    .reduce((acc,cur) => {
+      const id = cur._id
+      return acc.concat(id)
+    }, []);
+  user.listings = listingsIds
+})
+
+// populate listings.photos:
+listingsdata.map(listing => {
+  const photosIds = photosData.filter(photo => photo.listing_id === listing._id)
+    .reduce((acc,cur) => {
+      const id = cur._id
+      return acc.concat(id)
+    }, []);
+  listing.photos = photosIds;
+})
+
+// populate listings.favorites:
+listingsdata.map(listing => {
+  const favoritesIds = favoritesData.filter(favorite => favorite.listing_id === listing._id)
+    .reduce((acc,cur) => {
+      const id = cur._id
+      return acc.concat(id)
+    }, []);
+  listing.favorites = favoritesIds;
+})
 
 usersCsv
   .writeRecords(usersData)

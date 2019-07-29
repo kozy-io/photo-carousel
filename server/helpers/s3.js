@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk');
 const request = require('request');
 const { AWSAccessKeyId, AWSSecretKey } = require('../../config.js');
-const { getImages } = require('./pexel.js');
+const { getImages } = require('./unsplash_helper.js');
 
 AWS.config.update({
   accessKeyId: `${AWSAccessKeyId}`,
