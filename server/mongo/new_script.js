@@ -49,7 +49,7 @@ const Listing = (listing_id, user_id, photos, favorites) => ({
   user_id,
   photos, // list of photos_id
   favorites // list of favorites_id
-})
+});
 
 const photosCsv = createCsvWriter({
   path: 'photos.csv',
@@ -85,11 +85,12 @@ const Favorite = (favorite_id, user_id, listing_id) => ({
   user_id,
   listing_id,
   title: faker.lorem.sentence(1)
-})
+});
 
 const usersData = [];
 const listingsdata = [];
 const photosData = [];
+const favoritesData = [];
 
 let generateUsers = (() => {
   const numUsers = 5; // increase this number after testing
@@ -101,7 +102,7 @@ let generateUsers = (() => {
 const idsUsers = usersData.reduce((acc, cur) => {
   const id = cur._id
   return acc.concat(id)
-}, [])
+}, []);
 
 let generateListings = (() => {
   let listingId = 0;
@@ -109,30 +110,58 @@ let generateListings = (() => {
     const random = Math.floor(Math.random() * Math.floor(10))
     for (let i = 0; i < random; i++){
       listingId++;
-      listingsdata.push(Listing(listingId, userId, [], []))
+      listingsdata.push(Listing(listingId, userId, [], []));
+    }
+  });
+})();
+
+const idsListings = listingsdata.reduce((acc, cur) => {
+  const id = cur._id;
+  return acc.concat(id);
+}, []);
+
+let generatePhotos = (() => {
+  let photoId = 0;
+  idsListings.map(listingId => {
+    const random = Math.floor(Math.random() * Math.floor(30));
+    let priority = 0;
+    for (let i = 0; i < random; i++){
+      photoId++;
+      photosData.push(Photo(photoId, listingId, priority));
+      priority++;
+    }
+  })
+})(); 
+
+let generateFavorites = (() => {
+  let favoriteId = 0;
+  const length = idsListings.length;
+  idsUsers.map(userId => {
+    const random = Math.floor(Math.random() * Math.floor(15));
+    const usedIds = []
+    for (let i = 0; i < random; i++){
+      const listingId = Math.floor(Math.random() * Math.floor(length - 1));
+      if (!usedIds.includes(listingId)){
+        usedIds.push(listingId);
+        favoriteId++;
+        favoritesData.push(Favorite(favoriteId, userId, listingId));
+      }
     }
   })
 })();
 
-const idsListings = listingsdata.reduce((acc, cur) => {
-  const id = cur._id
-  return acc.concat(id)
-}, [])
+usersCsv
+  .writeRecords(usersData)
+  .then(()=> console.log('The CSV file was written successfully'));
 
-let generatePhotos = (() => {
-  let photoId = 0;
-  console.log('idsListings.length: ', idsListings.length)
-  idsListings.map(listingId => {
-    const random = Math.floor(Math.random() * Math.floor(30))
-    console.log(random)
-    for (let i = 0; i < random; i++){
-      photoId++;
-      photosData.push(Photo(photoId, listingId, 0))
-    }
-  })
-})()
+listingsCsv
+  .writeRecords(listingsdata)
+  .then(()=> console.log('The CSV file was written successfully'));
 
-console.log(photosData)
+photosCsv
+  .writeRecords(photosData)
+  .then(()=> console.log('The CSV file was written successfully'));
 
-
-
+favoritesCsv
+  .writeRecords(favoritesData)
+  .then(()=> console.log('The CSV file was written successfully'));
