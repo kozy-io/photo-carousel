@@ -89,6 +89,7 @@ const Favorite = (favorite_id, user_id, listing_id) => ({
 
 const usersData = [];
 const listingsdata = [];
+const photosData = [];
 
 let generateUsers = (() => {
   const numUsers = 5; // increase this number after testing
@@ -106,15 +107,32 @@ let generateListings = (() => {
   let listingId = 0;
   idsUsers.map(userId => {
     const random = Math.floor(Math.random() * Math.floor(10))
-    console.log(random)
-    for (let j = 0; j < random; j++){
+    for (let i = 0; i < random; i++){
       listingId++;
       listingsdata.push(Listing(listingId, userId, [], []))
     }
   })
-
 })();
 
-console.log(listingsdata)
+const idsListings = listingsdata.reduce((acc, cur) => {
+  const id = cur._id
+  return acc.concat(id)
+}, [])
+
+let generatePhotos = (() => {
+  let photoId = 0;
+  console.log('idsListings.length: ', idsListings.length)
+  idsListings.map(listingId => {
+    const random = Math.floor(Math.random() * Math.floor(30))
+    console.log(random)
+    for (let i = 0; i < random; i++){
+      photoId++;
+      photosData.push(Photo(photoId, listingId, 0))
+    }
+  })
+})()
+
+console.log(photosData)
+
 
 
