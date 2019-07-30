@@ -41,7 +41,6 @@ const generatePhoto = () => {
         if (randomNumber < 5) {
           randomNumber = 5;
         }
-
         for (let priority = 0; priority < randomNumber; priority++) {
           let randomImage =  Math.floor(Math.random() * Math.floor(29));
           const photoUrl = houseData.results[randomImage].urls.regular;
