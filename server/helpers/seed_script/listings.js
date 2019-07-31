@@ -4,7 +4,7 @@ const fs = require('fs');
 const Listing = (listing_id, user_id) => {
   let _id = listing_id;
   let title = faker.lorem.sentence(3);
-  let location = `${faker.address.city()}, ${faker.address.state()}`;
+  let location = `${faker.address.city()} - ${faker.address.state()}`;
   let rating = faker.finance.amount(0, 4, 1);
   let total_ratings = faker.random.number(1000);
 

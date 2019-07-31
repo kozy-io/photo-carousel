@@ -10,12 +10,12 @@ const Photo = (photo_id, listing_id, priority, index) => {
   return `${photo_id},${listing_id},${photo_url},${priority},${caption}\n`;
 };
 
-const numListingsIds = 584591;
+const numListingsIds = 587297;
 
 const seeding = () => {
-  const writeFile = fs.createWriteStream('photos1.csv');
+  const writeFile = fs.createWriteStream('photos.csv');
   writeFile.write('_id,listing_id,photo_url,priority,caption\n');
-  let photoId = 2901451 ;
+  let photoId = 2898882 ;
   const photosLen = urlPhotos.length;
 
   for (let listingId = 200001; listingId <= numListingsIds; listingId++){
