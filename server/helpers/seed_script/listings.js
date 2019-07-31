@@ -11,20 +11,38 @@ const Listing = (listing_id, user_id) => {
   return `${_id},${title},${location},${rating},${total_ratings},${user_id}\n`;
 };
 
-const numUsersIds = 130000;
-
 const seeding = () => {
-  const writeFile = fs.createWriteStream('listings.csv');
-  writeFile.write('_id,title,location,rating,total_ratings,user_id\n'); //TODO
-  let listingId = 1;
+  let idListing = 1;
+  let idsUsers = 2000001;
+  let data;
 
-  for (let userId = 1; userId <= numUsersIds; userId++){
-    const random = Math.floor(Math.random() * Math.floor(10))
-    for (let id = listingId; id < listingId+random; id++){
-      data = Listing(id, userId);
-      writeFile.write(data);
+  const writeFile = fs.createWriteStream('listings.csv');
+  writeFile.write('_id,title,location,rating,total_ratings,user_id\n');
+
+  const write = () => {
+    let ok = true;
+    do {
+      idsUsers--;
+      const numListings = Math.floor(Math.random() * Math.floor(11));
+      for (let id = idListing; id < idListing + numListings; id++){
+        data = Listing(id, idsUsers);
+        if (idsUsers === 1) {
+          // Last time!
+          writeFile.write(data);
+        } else {
+          // See if we should continue, or wait.
+          // Don't pass the callback, because we're not done yet.
+          ok = writeFile.write(data);
+        }
+      }
+      idListing += numListings
+    } while (idsUsers > 1 && ok);
+    if (idsUsers > 1) {
+      // Had to stop early!
+      // Write some more once it drains.
+      writeFile.once('drain', write);
     }
-    listingId += random
   }
+  write();
 }
 seeding();

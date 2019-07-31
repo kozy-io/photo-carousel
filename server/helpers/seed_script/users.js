@@ -13,7 +13,7 @@ const User = (user_id) => {
 };
 
 const seeding = () => {
-  let i = 130001;
+  let i = 2000001;
   let data;
 
   const writeFile = fs.createWriteStream('users.csv');
