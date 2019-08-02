@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -5,7 +6,6 @@ const path = require('path');
 const expressStaticGzip = require('express-static-gzip');
 const { Op } = require('sequelize');
 const db = require('./server/db/index.js');
-
 
 const app = express();
 const port = 3002;
