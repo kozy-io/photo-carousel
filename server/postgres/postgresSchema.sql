@@ -13,7 +13,7 @@ email VARCHAR
 );
 
 CREATE TABLE listings (
-_id INT NOT NULL PRIMARY KEY,
+_id SERIAL NOT NULL PRIMARY KEY,
 title CHAR varying(60) NOT NULL,
 location CHAR varying(60) NOT NULL,
 rating NUMERIC(2) NOT NULL,
@@ -22,7 +22,7 @@ user_id INT NOT NULL REFERENCES users(_id)
 );
 
 CREATE TABLE photos (
-_id INT NOT NULL PRIMARY KEY,
+_id SERIAL NOT NULL PRIMARY KEY,
 listing_id INT NOT NULL REFERENCES listings(_id),
 photo_url VARCHAR NOT NULL,
 priority INT NOT NULL,
