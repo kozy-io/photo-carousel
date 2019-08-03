@@ -57,7 +57,40 @@ app.put('/api/listings/:listingId', (req, res) => {
   )
 });
 
-// CONTINUE FROM HERE:
-// | DELETE | /api/listings/:listingId | Delete listing | _listingId_ |
+// Delete listing
+app.delete('/api/listings/:listingId', (req, res) => {
+  // TODO
+});
+
+// Get photos by listingId
+app.get('/api/photos/:listingId', (req, res) => {
+  const { listingId } = req.params;
+  const QUERY = 'SELECT * FROM photos WHERE listing_id = $1';
+  db.query(QUERY, [listingId], (error, results) => {
+    if (error) {
+      throw error
+    }
+    res.send(results.rows)
+  })
+});
+
+// Add new photo
+app.post('/api/photos/:listingId', (req, res) => {
+  const { listingId } = req.params;
+  const { photo_url,caption } = req.body;
+  const QUERY = 'INSERT INTO photos(listing_id,photo_url,priority,caption) VALUES ($1,$2,0,$3)';
+  db.query(
+    QUERY, 
+    [listingId,photo_url,caption],
+    (error, results) => {
+      if (error) {
+        throw error
+      }
+      res.send(results.rows)
+    }
+  )
+});
+
+// TODO: create endpoints that are missing
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
