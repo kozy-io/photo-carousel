@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "test": "k6 run testPerformance/script.js",
+    "test": "k6 run --vus 1 --duration 30s testPerformance/script.js",
     "start": "nodemon index.js",
     "seed": "node ./server/helpers/photos_seed_script/seed.js",
     "tables": "node ./server/db/index.js",

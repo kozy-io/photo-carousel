@@ -22,7 +22,7 @@ app.get('/api/listings/:listingId', (req, res) => {
     }
     res.send(results.rows)
   })
-})
+});
 
 // Add new listing
 app.post('/api/listings', (req, res) => {
@@ -38,10 +38,26 @@ app.post('/api/listings', (req, res) => {
       res.send(results.rows)
     }
   )
-})
+});
+
+// Edit listing
+app.put('/api/listings/:listingId', (req, res) => {
+  const { listingId } = req.params;
+  const { title,location } = req.body;
+  const QUERY = 'UPDATE listings SET title = $1, location = $2 WHERE _id = $3';
+  db.query(
+    QUERY, 
+    [title, location, listingId],
+    (error, results) => {
+      if (error) {
+        throw error
+      }
+      res.send(results.rows)
+    }
+  )
+});
 
 // CONTINUE FROM HERE:
-// | PUT | /api/listings/:listingId | Edit listing | _listingId_ |
 // | DELETE | /api/listings/:listingId | Delete listing | _listingId_ |
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
