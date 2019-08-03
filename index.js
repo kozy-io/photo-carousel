@@ -27,16 +27,10 @@ app.get('/api/listings/:listingId', (req, res) => {
 // Add new listing
 app.post('/api/listings', (req, res) => {
   const { title,location,rating,total_ratings,user_id } = req.body;
-  const header = 'title,location,rating,total_ratings,user_id';
-  const QUERY = 'INSERT INTO listings($1) VALUES ($2, $3, $4, $5, $6)';
+  const QUERY = 'INSERT INTO listings(title,location,rating,total_ratings,user_id) VALUES ($1,$2,$3,$4,$5)';
   db.query(
     QUERY, 
-    [header], 
-    [title],
-    [location],
-    [rating],
-    [total_ratings],
-    [user_id],
+    [title, location, rating, total_ratings, user_id],
     (error, results) => {
       if (error) {
         throw error
