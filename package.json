@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "test": "jest",
+    "test": "k6 run --vus 1 --duration 30s testPerformance/script.js",
     "start": "nodemon index.js",
-    "seed": "node ./server/db/seed.js",
+    "seed": "node ./server/helpers/photos_seed_script/seed.js",
     "tables": "node ./server/db/index.js",
     "start:docker": "npm run tables && npm run seed && npm run start"
   },
@@ -51,8 +51,11 @@
     "morgan": "^1.9.1",
     "mysql2": "^1.6.5",
     "newrelic": "^5.11.0",
+    "node-fetch": "^2.6.0",
     "nodemon": "^1.19.1",
     "path": "^0.12.7",
+    "pg": "^7.12.0",
+    "redis": "^2.8.0",
     "sequelize": "^5.9.3"
   },
   "devDependencies": {

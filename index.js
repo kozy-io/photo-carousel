@@ -2,110 +2,128 @@ require('newrelic');
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const redis = require('redis');
 const path = require('path');
-const expressStaticGzip = require('express-static-gzip');
-const { Op } = require('sequelize');
-const db = require('./server/db/index.js');
+const db = require('./server/postgres/index.js');
 
 const app = express();
 const port = 3002;
 
+// create and connect redis client to local instance.
+const client = redis.createClient();
+
+// echo redis errors to the console
+client.on('error', (err) => {
+  console.log("Error " + err)
+});
+
 app.use(morgan('tiny'));
 app.use(bodyParser());
-
-// WHEN READY TO PRODUCTION, UNCOMMENT:
-// app.use('/', expressStaticGzip(path.resolve(__dirname, './public/dist'), {
-//   enableBrotli: true,
-//   orderPreference: ['br', 'gz'],
-//   setHeaders(res, path) {
-//     res.setHeader('Cache-Control', 'public, max-age=31536000');
-//   },
-// }));
-
-// app.use('/photoCarousel/:listingID', expressStaticGzip(path.resolve(__dirname, './public/dist'), {
-//   enableBrotli: true,
-//   orderPreference: ['br', 'gz'],
-//   setHeaders(res, path) {
-//     res.setHeader('Cache-Control', 'public, max-age=31536000');
-//   },
-// }));
-
-
 app.use('/',express.static(path.resolve(__dirname, './public/dist')));
+app.use('/:listingId', express.static(path.resolve(__dirname, './public/dist')));
 
-app.use('/photoCarousel/:listingID', express.static(path.resolve(__dirname, './public/dist')));
+// Get a specific listingId
+app.get('/api/listings/:listingId', (req, res) => {
 
+  // key to store results in Redis store
+  const listingsRedisKey = 'user:listings';
 
-app.get('/api/listings/info/:listingID', (req, res) => {
-  const { listingID } = req.params;
-
-  db.Listing.findOne({
-    where: {
-      id: listingID,
-    },
-  }).then(result => res.send(result))
-    .catch(err => res.send(err));
+  // Try fetching the result from Redis first in case we have it cached
+  return client.get(listingsRedisKey, (err, listings) => {
+    // If that key exists in Redis store
+    if (listings) {
+        return res.json({ source: 'cache', data: JSON.parse(listings) })
+    } else {
+      const { listingId } = req.params;
+      const QUERY = 'SELECT * FROM listings WHERE _id = $1';
+      db.query(QUERY, [listingId], (error, results) => {
+        if (error) {
+          throw error
+        }
+        res.send(results.rows)
+      })
+    }
+  })
 });
 
-
-app.get('/api/listings/photos/initial/:listingID', (req, res) => {
-  const { listingID } = req.params;
-
-  db.Photo.findAll({
-    where: {
-      listing_id: listingID,
-      priority: {
-        [Op.lte]: 4,
-      },
-    },
-    order: [
-      ['priority', 'ASC'],
-    ],
-  }).then(result => res.send(result))
-    .catch(err => res.send(err));
+// Add new listing
+app.post('/api/listings', (req, res) => {
+  const { title,location,rating,total_ratings,user_id } = req.body;
+  const QUERY = 'INSERT INTO listings(title,location,rating,total_ratings,user_id) VALUES ($1,$2,$3,$4,$5)';
+  db.query(
+    QUERY, 
+    [title, location, rating, total_ratings, user_id],
+    (error, results) => {
+      if (error) {
+        throw error
+      }
+      res.send(results.rows)
+    }
+  )
 });
 
-app.get('/api/listings/photos/:listingID', (req, res) => {
-  const { listingID } = req.params;
-
-  db.Photo.findAll({
-    where: {
-      listing_id: listingID,
-      priority: {
-        [Op.gte]: 5,
-      },
-    },
-    order: [
-      ['priority', 'ASC'],
-    ],
-  }).then(result => res.send(result))
-    .catch(err => res.send(err));
+// Edit listing
+app.put('/api/listings/:listingId', (req, res) => {
+  const { listingId } = req.params;
+  const { title,location } = req.body;
+  const QUERY = 'UPDATE listings SET title = $1, location = $2 WHERE _id = $3';
+  db.query(
+    QUERY, 
+    [title, location, listingId],
+    (error, results) => {
+      if (error) {
+        throw error
+      }
+      res.send(results.rows)
+    }
+  )
 });
 
-
-app.get('/api/users/:userID', (req, res) => {
-  const { userID } = req.params;
-
-  db.User.findOne({
-    where: {
-      id: userID,
-    },
-  }).then(result => res.send(result))
-    .catch(err => res.send(err));
+// Delete listing
+app.delete('/api/listings/:listingId', (req, res) => {
+  // TODO
 });
 
+// Get photos by listingId
+app.get('/api/photos/:listingId', (req, res) => {
+  // key to store results in Redis store
+  const photosRedisKey = 'user:photos';
 
-app.get('/api/users/lists/:userID/:listTitle', (req, res) => {
-  const { userID, listTitle } = req.params;
-
-  db.List.findAll({
-    where: {
-      user_id: userID,
-      title: listTitle,
-    },
-  }).then(result => res.send(result))
-    .catch(err => res.send(err));
+  // Try fetching the result from Redis first in case we have it cached
+  return client.get(photosRedisKey, (err, photos) => {
+    // If that key exists in Redis store
+    if (photos) {
+        return res.json({ source: 'cache', data: JSON.parse(photos) })
+    } else {
+      const { listingId } = req.params;
+      const QUERY = 'SELECT * FROM photos WHERE listing_id = $1';
+      db.query(QUERY, [listingId], (error, results) => {
+        if (error) {
+          throw error
+        }
+        res.send(results.rows)
+      })
+    }
+  })
 });
 
+// Add new photo
+app.post('/api/photos/:listingId', (req, res) => {
+  const { listingId } = req.params;
+  const { photo_url,caption } = req.body;
+  const QUERY = 'INSERT INTO photos(listing_id,photo_url,priority,caption) VALUES ($1,$2,0,$3)';
+  db.query(
+    QUERY, 
+    [listingId,photo_url,caption],
+    (error, results) => {
+      if (error) {
+        throw error
+      }
+      res.send(results.rows)
+    }
+  )
+});
+
+// TODO: create endpoints that are missing
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));

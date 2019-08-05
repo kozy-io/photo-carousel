@@ -9,8 +9,8 @@
 | Method | Endpoint | Description | Params |
 |--------|----------|-------------|--------|
 | GET | /api/listings | Get all listings | |
-| GET | /api/listings/:userId | Get all listings by user | _userId_ |
-| POST | /api/listings | Add new listing | _userId_ |
+| GET | /api/listings/:listingId | Get a specific listingId | _listingId_ |
+| POST | /api/listings | Add new listing | |
 | PUT | /api/listings/:listingId | Edit listing | _listingId_ |
 | DELETE | /api/listings/:listingId | Delete listing | _listingId_ |
 

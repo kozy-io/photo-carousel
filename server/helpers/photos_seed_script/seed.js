@@ -4,7 +4,7 @@ const imagesFile = fs.createWriteStream('./photos.csv');
 const urlPhotos = require('./urlPhotos.js')
 
 const NUM_LISTINGS = 10000481;
-// const NUM_LISTINGS = 10; // TEST
+// const NUM_LISTINGS = 500; // TEST
 const MIN_IMAGES = 2;
 const MAX_IMAGES = 20;
 const PATH_TO_S3 = 'https://kozy-images.s3-us-west-1.amazonaws.com/';
@@ -20,9 +20,10 @@ function printProgress(progress, count) {
   console.log(`Current progress: ${progress}%; Current image count: ${count}`);
 }
 
+imagesFile.write('_id,listing_id,photo_url,priority,caption\n');
+
 function write() {
   let ok = true;
-  imagesFile.write('_id,listing_id,photo_url,priority,caption\n');
 
   while (ok && listingIndex <= NUM_LISTINGS) {
     if (listingIndex % 100000 === 0) {
