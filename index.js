@@ -10,7 +10,7 @@ const port = 3002;
 
 // create and connect redis client to local instance.
 const client = redis.createClient({
-  host: '3.15.162.51'
+  host: '18.224.94.100'
 });
 
 // echo redis errors to the console
