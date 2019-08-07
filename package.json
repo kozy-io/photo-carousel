@@ -9,7 +9,7 @@
     "start": "nodemon index.js",
     "seed": "node ./server/helpers/photos_seed_script/seed.js",
     "tables": "node ./server/db/index.js",
-    "start:docker": "npm run tables && npm run seed && npm run start"
+    "start:docker": "node index.js"
   },
   "jest": {
     "snapshotSerializers": [
