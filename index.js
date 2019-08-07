@@ -100,17 +100,17 @@ app.post('/api/photos/:listingId', (req, res) => {
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
 
-// WITH REDIS:
+// // WITH REDIS:
 // const redis = require('redis');
 
-// create and connect redis client to local instance.
+// // create and connect redis client to local instance.
 // const client = redis.createClient();
 
-// echo redis errors to the console
+// // echo redis errors to the console
 // client.on('error', (err) => {
 //   console.log("Error " + err)
 // });
-// Get a specific listingId
+// // Get a specific listingId
 // app.get('/api/listings/:listingId', (req, res) => {
 
 //   // key to store results in Redis store
@@ -134,7 +134,7 @@ app.listen(port, () => console.log(`Listening on port ${port}!`));
 //   })
 // });
 
-// Get photos by listingId
+// // Get photos by listingId
 // app.get('/api/photos/:listingId', (req, res) => {
 //   // key to store results in Redis store
 //   const photosRedisKey = 'user:photos';
