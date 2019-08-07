@@ -9,7 +9,9 @@ const app = express();
 const port = 3002;
 
 // create and connect redis client to local instance.
-const client = redis.createClient();
+const client = redis.createClient({
+  host: '18.224.94.100'
+});
 
 // echo redis errors to the console
 client.on('error', (err) => {
