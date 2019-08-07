@@ -1,4 +1,3 @@
-require('newrelic');
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -19,6 +18,12 @@ client.on('error', (err) => {
 
 app.use(morgan('tiny'));
 app.use(bodyParser());
+
+app.get('*.js', (req, res, next) => {
+  req.url = req.url + '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
 app.use('/',express.static(path.resolve(__dirname, './public/dist')));
 app.use('/:listingId', express.static(path.resolve(__dirname, './public/dist')));
 
