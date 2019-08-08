@@ -21,6 +21,7 @@ app.use('/:listingId', express.static(path.resolve(__dirname, './public/dist')))
 // Get a specific listingId
 app.get('/api/listings/:listingId', (req, res) => {
   const { listingId } = req.params;
+  console.log(typeof listingId)
   const QUERY = 'SELECT * FROM listings WHERE _id = $1';
   db.query(QUERY, [listingId], (error, results) => {
     if (error) {
