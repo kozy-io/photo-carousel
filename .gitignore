@@ -2,7 +2,7 @@ node_modules
 coverage
 config.js
 trash
-.DS_Store
 server/csvFiles
 newrelic.js
 newrelic_agent.log
+.DS_Store
