@@ -6,9 +6,7 @@
   "scripts": {
     "react-dev": "webpack -d --watch",
     "test": "k6 run --vus 1 --duration 30s testPerformance/script.js",
-    "start": "nodemon index.js",
-    "seed": "node ./server/helpers/photos_seed_script/seed.js",
-    "tables": "node ./server/db/index.js"
+    "start": "nodemon index.js"
   },
   "jest": {
     "snapshotSerializers": [
