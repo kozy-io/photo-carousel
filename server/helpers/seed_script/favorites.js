@@ -8,8 +8,8 @@ const Favorite = (favorite_id, user_id, listing_id) => {
 
 const seeding = () => {
   let idFavorite = 1;
-  let idsUsers = 130001;
-  let idsListings = 587297;
+  let idsUsers = 2000001;
+  let idsListings = 9995628;
   let data;
 
   const writeFile = fs.createWriteStream('favorites.csv');

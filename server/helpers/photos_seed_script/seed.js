@@ -3,7 +3,7 @@ const fs = require('fs');
 const imagesFile = fs.createWriteStream('./photos.csv');
 const urlPhotos = require('./urlPhotos.js')
 
-const NUM_LISTINGS = 10000481;
+const NUM_LISTINGS = 9995627;
 // const NUM_LISTINGS = 500; // TEST
 const MIN_IMAGES = 2;
 const MAX_IMAGES = 20;
