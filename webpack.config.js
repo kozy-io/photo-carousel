@@ -1,21 +1,21 @@
 const path = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
+// const TerserPlugin = require('terser-webpack-plugin');
+// const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
-  plugins: [
-    new CompressionPlugin({
-      cache: true,
-      algorithm: 'gzip'
-    })
-  ],
-  optimization: {
-    minimizer: [new TerserPlugin({
-      cache: true, 
-      parallel: true
-    })],
-  },
-  mode: 'production',
+  // plugins: [
+  //   new CompressionPlugin({
+  //     cache: true,
+  //     algorithm: 'gzip'
+  //   })
+  // ],
+  // optimization: {
+  //   minimizer: [new TerserPlugin({
+  //     cache: true, 
+  //     parallel: true
+  //   })],
+  // },
+  mode: 'development',
   watch: true,
   entry: path.resolve(__dirname, 'client/src/index.jsx'),
   output: {

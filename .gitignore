@@ -2,3 +2,7 @@ node_modules
 newrelic.js
 newrelic_agent.log
 .DS_Store
+npm-debug.log
+public/dist/photoCarouselBundle.js
+config.js
+dump.rdb

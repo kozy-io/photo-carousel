@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "test": "k6 run --vus 1 --duration 30s testPerformance/script.js",
-    "start": "nodemon index.js"
+    "test": "k6 run --vus 1000 --duration 120s testPerformance/script.js",
+    "start": "nodemon index_redis.js"
   },
   "jest": {
     "snapshotSerializers": [
